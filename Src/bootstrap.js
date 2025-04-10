@@ -6,7 +6,7 @@ import { dbconnection } from "../Database/dbconnection.js";
 import { globalErrorHandling } from "./Middleware/asyncHandler.js";
 import { courseRouter, studentRouter } from "./Modules/index.js";
 
-export const bootstrap = async (app, express) => {
+export default async function bootstrap  (app, express)  {
   //dotenv
   dotenv.config({ path: path.resolve("./.env") });
   
