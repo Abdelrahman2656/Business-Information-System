@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer'
 export const sendEmail =async({to , subject , html ,attachments = [] })=>{
 const transporter = nodemailer.createTransport({
-    port:456 ,
+    port:465 ,
     secure: true,
     service:"gmail",
     auth:{
@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 })
 await transporter.sendMail({
     to,
-    from:`"Business Information System " <${process.env.USER_SENDER}>`,
+    from:`"Business Information System " <${process.env.USER_SEND}>`,
     subject,
     html,
     attachments
