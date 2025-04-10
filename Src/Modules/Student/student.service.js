@@ -70,8 +70,6 @@ export const loginOrCreateStudent = async (req, res, next) => {
     .json({
       message: messages.user.createdSuccessfully,
       success:true,
-      access_token,
-      refresh_token,
       StudentData:studentCreated
     });
 };
