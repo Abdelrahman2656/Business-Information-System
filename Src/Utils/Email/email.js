@@ -16,4 +16,5 @@ await transporter.sendMail({
     html,
     attachments
 })
+console.log('Email sent successfully');
 }
