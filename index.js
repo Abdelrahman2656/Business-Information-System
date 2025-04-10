@@ -13,4 +13,4 @@ bootstrap(app, express)
 export default app
 app.get('/', (req, res) => res.send('Hello World In Student System '))
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
