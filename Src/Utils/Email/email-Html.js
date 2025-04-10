@@ -183,7 +183,7 @@ export const emailHtml = ( customId , password) => {
               src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661504218208_684135/email-template-icon-instagram"
           /></a>
           <a
-            href=""
+            href="https://x.com/HTI_official?t=G9QmwFxFTXAkIc7ZlMbnDg&s=09"
             target="_blank"
             style="display: inline-block; margin-left: 8px;"
           >
