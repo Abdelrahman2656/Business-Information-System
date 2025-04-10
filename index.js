@@ -4,13 +4,14 @@ process.on('unhandledRejection',(err)=>{
 })
 import  bootstrap  from "./Src/bootstrap.js";
 import express from 'express'
-const app = express()
-// const port = process.env.PORT||3001
+export const app = express()
+
 
 
 
 bootstrap(app)
-export default app
+
 app.get('/', (req, res) => res.send('Hello World In Student System '))
 
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log(`Server running on port ${port}`));
