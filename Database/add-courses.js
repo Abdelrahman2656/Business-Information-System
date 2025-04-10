@@ -3,7 +3,7 @@ import fs from "fs";
 import path from 'path';
 import { Course } from "../Database/Model/course.model.js";
 import { dbconnection } from "./dbconnection.js";
-import mongoose from "mongoose";
+
 
 dotenv.config({ path: path.resolve("./.env") });
 let dirPath = path.join(process.cwd(), 'Database/path/course');
