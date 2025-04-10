@@ -5,7 +5,7 @@ process.on('unhandledRejection',(err)=>{
 import { bootstrap } from "./Src/bootstrap.js";
 import express from 'express'
 const app = express()
-const port = 3000
+const port = process.env.PORT||3001
 
 
 
