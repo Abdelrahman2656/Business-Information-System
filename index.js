@@ -6,7 +6,7 @@ export const app = express()
 
 
 
-bootstrap(app)
+bootstrap(app,express)
 
 app.get('/', (req, res) => res.send('Hello World In Student System '))
 
