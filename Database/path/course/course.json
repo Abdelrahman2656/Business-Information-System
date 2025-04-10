@@ -1,0 +1,454 @@
+[
+  {
+    "courseCode": "HUM 110",
+    "name": "طرق ومهارات تواصل",
+    "credits": 3,
+    "instructor": "Dr.Sarah Ahmed",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "firstYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "HUM 111",
+    "name": "التفكير الابتكاري",
+    "credits": 3,
+    "instructor": "Dr. Rania Ragab",
+    "day": "Sat/Sun 11.25-1.05",
+    "yearLevel": "firstYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "ECO 110",
+    "name": "مبادي الاقتصاد",
+    "credits": 3,
+    "instructor": "Dr.Imad",
+    "day": "Mon/Tue 9.00-11.25",
+    "yearLevel": "firstYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "LNG 110",
+    "name": "(1) لغه اجنبيه",
+    "credits": 3,
+    "instructor": "Dr.Osama El-sayed",
+    "day": "Mon/Tue 11.25-1.05",
+    "yearLevel": "firstYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "LAW 111",
+    "name": "مبادئ القانون",
+    "credits": 3,
+    "instructor": "Prof.Mohamed Ahmed",
+    "day": "Sun/Wed 1.05-3.30",
+    "yearLevel": "firstYear",
+    "semester": "fall"
+  },
+
+  {
+    "courseCode": "HUM 222",
+    "name": "مبادي علم الاجتماع ",
+    "credits": 3,
+    "instructor": "Dr.Sarah Ahmed",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "firstYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "HUM 223",
+    "name": "حقوق الانسان",
+    "credits": 3,
+    "instructor": "Dr. Rania Ragab",
+    "day": "Sat/Sun 11.25-1.05",
+    "yearLevel": "firstYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MNG 111",
+    "name": "مبادئ اداره الاعمال",
+    "credits": 3,
+    "instructor": "Dr.Imad",
+    "day": "Mon/Tue 9.00-11.25",
+    "yearLevel": "firstYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "ACC 112",
+    "name": "مبادي المحاسبه الماليه",
+    "credits": 3,
+    "instructor": "Dr.Osama El-sayed",
+    "day": "Mon/Tue 11.25-1.05",
+    "yearLevel": "firstYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "ECO 113",
+    "name": "مبادئ الاقتصاد الجزئي",
+    "credits": 3,
+    "instructor": "Prof.Mohamed Ahmed",
+    "day": "Sun/Wed 1.05-3.30",
+    "yearLevel": "firstYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MTH 114",
+    "name": "رياضيات الاعمال",
+    "credits": 3,
+    "instructor": "Prof.Yousria Abo-Elnaga",
+    "day": "Mod/Wed 1.05-3.30",
+    "yearLevel": "firstYear",
+    "semester": "spring"
+  },
+
+  {
+    "courseCode": "ITR 201",
+    "name": "(أ)تدريب عملي",
+    "credits": 5,
+    "instructor": "Dr.Nabil Abdel Salam",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "firstYear",
+    "semester": "summer"
+  },
+
+  {
+    "courseCode": "LNG 210",
+    "name": "(2)لغه اجنبيه ",
+    "credits": 3,
+    "instructor": "Dr.Osama El-sayed",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "secondYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MNG 112",
+    "name": "السلوك التنظيمي",
+    "credits": 3,
+    "instructor": "Dr. Rania Ragab",
+    "day": "Sat/Sun 11.25-1.05",
+    "yearLevel": "secondYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MNG 210",
+    "name": " ادارة اللوجستيات وسلاسل الامداد",
+    "credits": 3,
+    "instructor": "Dr.Imad",
+    "day": "Mon/Tue 9.00-11.25",
+    "yearLevel": "secondYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "ACC 211",
+    "name": "مبادئ محاسبة التكاليف",
+    "credits": 3,
+    "instructor": "Dr.Sarah Ahmed",
+    "day": "Mon/Tue 11.25-1.05",
+    "yearLevel": "secondYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MNG 212",
+    "name": "مبادئ التسويق",
+    "credits": 3,
+    "instructor": "Prof.Mohamed Ahmed",
+    "day": "Sun/Wed 1.05-3.30",
+    "yearLevel": "secondYear",
+    "semester": "fall"
+  },
+
+  {
+    "courseCode": "ACC 313",
+    "name": "مبادي المحاسبة الادارية ",
+    "credits": 3,
+    "instructor": "Dr.Osama El-sayed",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "secondYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MNG 214",
+    "name": "ادارة الانتاج والعمليات",
+    "credits": 3,
+    "instructor": "Dr. Rania Ragab",
+    "day": "Sat/Sun 11.25-1.05",
+    "yearLevel": "secondYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MNG 215",
+    "name": "اداره الموارد البشرية",
+    "credits": 3,
+    "instructor": "Dr.Imad",
+    "day": "Mon/Tue 9.00-11.25",
+    "yearLevel": "secondYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MNG 216",
+    "name": "مبادئ الادارة المالية",
+    "credits": 3,
+    "instructor": "Dr.Sarah Ahmed",
+    "day": "Mon/Tue 11.25-1.05",
+    "yearLevel": "secondYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MNG 318",
+    "name": "الادارة الاستراتيجية",
+    "credits": 3,
+    "instructor": "Prof.Mohamed Ahmed",
+    "day": "Sun/Wed 1.05-3.30",
+    "yearLevel": "secondYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MNG 317",
+    "name": "مبادئ الاستثمار",
+    "credits": 3,
+    "instructor": "Prof.Yousria Abo-Elnaga",
+    "day": "Mod/Wed 1.05-3.30",
+    "yearLevel": "secondYear",
+    "semester": "spring"
+  },
+
+  {
+    "courseCode": "ITR 301",
+    "name": "(ب)تدريب عملي",
+    "credits": 5,
+    "instructor": "Dr.Nabil Abdel Salam",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "secondYear",
+    "semester": "summer"
+  },
+
+  {
+    "courseCode": "MNG 211",
+    "name": "ريادة الاعمال والمشروعات الصغيرة",
+    "credits": 3,
+    "instructor": "Dr.Osama El-sayed",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "thirdYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MNG 321",
+    "name": "ادارة الجودة الشاملة",
+    "credits": 3,
+    "instructor": "Dr. Rania Ragab",
+    "day": "Sat/Sun 11.25-1.05",
+    "yearLevel": "thirdYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MNG 324",
+    "name": "تطبيقات الحاسب",
+    "credits": 3,
+    "instructor": "Dr.Imad",
+    "day": "Mon/Tue 9.00-11.25",
+    "yearLevel": "thirdYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MIS 402",
+    "name": "قواعد البيانات",
+    "credits": 3,
+    "instructor": "Dr.Sarah Ahmed",
+    "day": "Mon/Tue 11.25-1.05",
+    "yearLevel": "thirdYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MIS 403",
+    "name": "تصميم البرامج الحاسب الالي",
+    "credits": 3,
+    "instructor": "Prof.Mohamed Ahmed",
+    "day": "Sun/Wed 1.05-3.30",
+    "yearLevel": "thirdYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "ECO 311",
+    "name": "مبادئ الاقتصاد الكلي",
+    "credits": 3,
+    "instructor": "Prof.Yousria Abo-Elnaga",
+    "day": "Mod/Wed 1.05-3.30",
+    "yearLevel": "thirdYear",
+    "semester": "fall"
+  },
+
+  {
+    "courseCode": "MTH 212",
+    "name": "الاحصاء التطبيقي",
+    "credits": 3,
+    "instructor": "Dr.Osama El-sayed",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "thirdYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "ECO 313",
+    "name": "مبادئ المالية العامة",
+    "credits": 3,
+    "instructor": "Dr. Rania Ragab",
+    "day": "Sat/Sun 11.25-1.05",
+    "yearLevel": "thirdYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MNG 330",
+    "name": "اساليب الكمية واتخاذ القرارات",
+    "credits": 3,
+    "instructor": "Dr.Imad",
+    "day": "Mon/Tue 9.00-11.25",
+    "yearLevel": "thirdYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "LAW 215",
+    "name": "القانون التجاري",
+    "credits": 3,
+    "instructor": "Dr.Sarah Ahmed",
+    "day": "Mon/Tue 11.25-1.05",
+    "yearLevel": "thirdYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MIS 404",
+    "name": "تحليل وتصميم نظم المعلومات",
+    "credits": 3,
+    "instructor": "Prof.Mohamed Ahmed",
+    "day": "Sun/Wed 1.05-3.30",
+    "yearLevel": "thirdYear",
+    "semester": "spring"
+  },
+  {
+    "courseCode": "MIS 405",
+    "name": "البنية التحتية لتكنولوجيا المعلومات",
+    "credits": 3,
+    "instructor": "Prof.Yousria Abo-Elnaga",
+    "day": "Mod/Wed 1.05-3.30",
+    "yearLevel": "thirdYear",
+    "semester": "spring"
+  },
+
+  {
+    "courseCode": "ITR 401",
+    "name": "(ج)تدريب عملي",
+    "credits": 5,
+    "instructor": "Dr.Nabil Abdel Salam",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "thirdYear",
+    "semester": "summer"
+  },
+
+  {
+    "courseCode": "MIS 401",
+    "name": "انظمة المعلومات المؤسسات",
+    "credits": 3,
+    "instructor": "Dr.Osama El-sayed",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "fourthYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MIS 407",
+    "name": "تحليلات الاعمال والتنقيب عن البيانات",
+    "credits": 3,
+    "instructor": "Dr. Rania Ragab",
+    "day": "Sat/Sun 11.25-1.05",
+    "yearLevel": "fourthYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MIS 412",
+    "name": "تطبيقات الانترنت والوسائط المتعددة",
+    "credits": 3,
+    "instructor": "Dr.Imad",
+    "day": "Mon/Tue 9.00-11.25",
+    "yearLevel": "fourthYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MIS 413",
+    "name": "تطبيقات في برمجة الحاسب الي",
+    "credits": 3,
+    "instructor": "Dr.Sarah Ahmed",
+    "day": "Mon/Tue 11.25-1.05",
+    "yearLevel": "fourthYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "MIS 330",
+    "name": "تحليلات الاعمال",
+    "credits": 3,
+    "instructor": "Prof.Mohamed Ahmed",
+    "day": "Sun/Wed 1.05-3.30",
+    "yearLevel": "fourthYear",
+    "semester": "fall"
+  },
+  {
+    "courseCode": "ACC 318",
+    "name": "اعداد وتحاليل التقارير المالية",
+    "credits": 3,
+    "instructor": "Prof.Yousria Abo-Elnaga",
+    "day": "Mod/Wed 1.05-3.30",
+    "yearLevel": "fourthYear",
+    "semester": "fall"
+  },
+
+  {
+    "courseCode": "MIS 210",
+    "name": "نظم المعلومات الادارية",
+    "credits": 3,
+    "instructor": "Dr.Osama El-sayed",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "fourthYear",
+    "semester": "summer"
+  },
+  {
+    "courseCode": "MIS 310",
+    "name": "الاعمال الالكترونية",
+    "credits": 3,
+    "instructor": "Dr. Rania Ragab",
+    "day": "Sat/Sun 11.25-1.05",
+    "yearLevel": "fourthYear",
+    "semester": "summer"
+  },
+  {
+    "courseCode": "MIS 430",
+    "name": "مشروع التخرج",
+    "credits": 3,
+    "instructor": "Dr.Imad",
+    "day": "Mon/Tue 9.00-11.25",
+    "yearLevel": "fourthYear",
+    "semester": "summer"
+  },
+  {
+    "courseCode": "MIS 406",
+    "name": "استراتيجية نظم المعلومات",
+    "credits": 3,
+    "instructor": "Dr.Sarah Ahmed",
+    "day": "Mon/Tue 11.25-1.05",
+    "yearLevel": "fourthYear",
+    "semester": "summer"
+  },
+  {
+    "courseCode": "MIS 410",
+    "name": "ادارة مشروعات النظم",
+    "credits": 3,
+    "instructor": "Prof.Mohamed Ahmed",
+    "day": "Sun/Wed 1.05-3.30",
+    "yearLevel": "fourthYear",
+    "semester": "summer"
+  },
+
+  {
+    "courseCode": "ITR 501",
+    "name": "(د)تدريب عملي",
+    "credits": 5,
+    "instructor": "Dr.Nabil Abdel Salam",
+    "day": "Sat/Sun 9.00-11.25",
+    "yearLevel": "fourthYear",
+    "semester": "summer"
+  }
+]
