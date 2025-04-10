@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "index.js",  
+        "src": "Src/bootstrap.js",  
         "use": "@vercel/node",  
         "config": {
           "includeFiles": ["**/*.js", "**/*.json"]  
@@ -12,7 +12,7 @@
     "routes": [
       {
         "src": "/(.*)",  
-        "dest": "index.js"  
+        "dest": "Src/bootstrap.js"  
       }
     ]
   }
