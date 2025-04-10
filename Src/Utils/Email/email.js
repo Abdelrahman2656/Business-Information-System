@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer'
 export const sendEmail =async({to , subject , html ,attachments = [] })=>{
 const transporter = nodemailer.createTransport({
-    port:465 ,
+    port:587 ,
     secure: true,
     service:"gmail",
     auth:{
