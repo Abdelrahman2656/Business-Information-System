@@ -9,6 +9,7 @@ import { courseRouter, studentRouter } from "./Modules/index.js";
 export const bootstrap = async (app, express) => {
   //dotenv
   dotenv.config({ path: path.resolve("./.env") });
+  
   //course data
   if (process.env.INSERT_COURSES === "true") {
     await insertCourses();
