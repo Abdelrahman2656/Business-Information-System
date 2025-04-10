@@ -2,8 +2,8 @@
     "version": 2,
     "builds": [
       {
-        "src": "Src/bootstrap.js",  
-        "use": "@vercel/node",  
+        "src": "index.js",  
+        "use": "@vercel/node",
         "config": {
           "includeFiles": ["**/*.js", "**/*.json"]  
         }
@@ -11,8 +11,8 @@
     ],
     "routes": [
       {
-        "src": "/(.*)",  
-        "dest": "Src/bootstrap.js"  
+        "src": "/(.*)",
+        "dest": "index.js"  
       }
     ]
   }

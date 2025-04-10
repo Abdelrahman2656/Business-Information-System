@@ -1,13 +1,13 @@
 import cors from "cors";
 import dotenv from "dotenv";
-import express from "express";
+
 import path from "path";
 import { insertCourses } from "../Database/add-courses.js";
 import { dbconnection } from "../Database/dbconnection.js";
 import { globalErrorHandling } from "./Middleware/asyncHandler.js";
 import { courseRouter, studentRouter } from "./Modules/index.js";
 
-export default async function bootstrap  (app , express)  {
+export default async function bootstrap  (app)  {
   //dotenv
   dotenv.config({ path: path.resolve("./.env") });
   

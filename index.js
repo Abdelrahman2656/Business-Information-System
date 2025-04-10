@@ -6,10 +6,10 @@ export const app = express()
 
 
 
-bootstrap(app,express)
-
-app.get('/', (req, res) => res.send('Hello World In Student System '))
+bootstrap(app)
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Server running on port ${port}`));
+app.get('/', (req, res) => res.send('Hello World In Student System '))
+
 export default app
