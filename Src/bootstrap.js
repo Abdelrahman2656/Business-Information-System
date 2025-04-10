@@ -6,7 +6,7 @@ import { globalErrorHandling } from "./Middleware/asyncHandler.js"
 import { courseRouter, studentRouter } from "./Modules/index.js"
 import { insertCourses } from "../Database/add-courses.js"
 
-export const bootstrap = async(app,express)=>{
+ const bootstrap = async(app,express)=>{
     //dotenv
 dotenv.config({path:path.resolve('./.env')})
 //course data
@@ -27,4 +27,7 @@ app.use('/api/v1',studentRouter)
 app.use('/api/v1/course',courseRouter)
 //global error handling 
 app.use(globalErrorHandling)
+
+
 }
+export default bootstrap
