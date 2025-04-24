@@ -19,7 +19,7 @@ const bootstrap  =async(app,express) => {
   //database
   await dbconnection();
   //use cors middleware
-  app.use(cors("*"));
+  app.use(cors());
   //app use json
   app.use(express.json());
 

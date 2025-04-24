@@ -47,7 +47,8 @@ const studentSchema = new Schema(
       registerCourses:[{
         course: { type: Schema.Types.ObjectId, ref: "Course" },
         semester: String,
-        yearLevel: String
+        yearLevel: String,
+        
     }]
   },
   {
