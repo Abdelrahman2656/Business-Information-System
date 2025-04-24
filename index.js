@@ -1,9 +1,11 @@
 
-import express from 'express'
+import dotenv from "dotenv";
+import express from 'express';
+import path from "path";
 import bootstrap from './Src/app.controller.js';
-export const app = express()
+ const app = express()
 
-
+dotenv.config({ path: path.resolve("config/.env") })
 
 
 bootstrap(app,express)

@@ -10,6 +10,10 @@ import { courseRouter, studentRouter } from "./Modules/index.js";
 const bootstrap  =async(app,express) => {
   //dotenv
   dotenv.config({ path: path.resolve("./.env") });
+  //use cors middleware
+  app.use(cors());
+  //app use json
+  app.use(express.json());
   
   //course data
   if (process.env.INSERT_COURSES === "true") {
@@ -17,11 +21,7 @@ const bootstrap  =async(app,express) => {
   }
 
   //database
-  await dbconnection();
-  //use cors middleware
-  app.use(cors());
-  //app use json
-  app.use(express.json());
+   dbconnection();
 
   // Router
   app.use("/api/v1", studentRouter);
