@@ -16,13 +16,13 @@ const bootstrap  =async(app,express) => {
   //app use json
   app.use(express.json());
   
+  //database
+   dbconnection();
   //course data
   if (process.env.INSERT_COURSES === "true") {
     await insertCourses();
   }
 
-  //database
-   dbconnection();
 
   // Router
   app.use("/api/v1", studentRouter);
