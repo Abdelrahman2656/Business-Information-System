@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import fs from "fs";
 import path from 'path';
 import { Course } from "../Database/Model/course.model.js";
-import { dbconnection } from "./dbconnection.js";
+import dbconnection from "./dbconnection.js";
 
 
 dotenv.config({ path: path.resolve("./.env") });

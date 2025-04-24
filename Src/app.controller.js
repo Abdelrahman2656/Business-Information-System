@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 
 import path from "path";
 import { insertCourses } from "../Database/add-courses.js";
-import { dbconnection } from "../Database/dbconnection.js";
+
+import dbconnection from "../Database/dbconnection.js";
 import { globalErrorHandling } from "./Middleware/asyncHandler.js";
 import { courseRouter, studentRouter } from "./Modules/index.js";
 
