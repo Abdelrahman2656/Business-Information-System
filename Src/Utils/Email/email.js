@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 })
 await transporter.sendMail({
     to,
-    from:"Business Information System 2025",
+    from: `"Business Information System 2025" <${process.env.HTI_SENDER}>`,
     subject,
     html,
     attachments
