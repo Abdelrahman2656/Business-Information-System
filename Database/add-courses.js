@@ -41,7 +41,7 @@ export const insertCourses = async () => {
     await dbconnection(); // الاتصال بقاعدة البيانات
     console.log("🔌 Database connected successfully!");
 
-    const existingCourses = await Course.countDocuments();
+    const existingCourses = await Course.find().countDocuments();
     console.log("📊 Existing courses count:", existingCourses);
 
     if (existingCourses > 0) {
