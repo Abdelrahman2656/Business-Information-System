@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 })
 await transporter.sendMail({
     to,
-    from:"Business Information System<info@hti.edu.eg>",
+    from:"Business Information System 2025",
     subject,
     html,
     attachments
