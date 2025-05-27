@@ -32,6 +32,14 @@ export const toggleRegistration = async (req, res, next) => {
         return next(new AppError(messages.course.notFound, 404));
       }
 
+      // التحقق من أن المادة تنتمي لنفس السنة الدراسية للطالب
+      if (courseExist.yearLevel !== yearLevel) {
+        return res.status(400).json({
+          success: false,
+          message: `لا يمكنك التسجيل في المادة ${courseExist.name} لأنها من السنة ${courseExist.yearLevel} وأنت في السنة ${yearLevel}`
+        });
+      }
+
       const isRegistered = studentExist.registerCourses.some(
         registeredCourse => registeredCourse.course.toString() === id
       );
