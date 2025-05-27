@@ -13,7 +13,7 @@ import { limiter } from "./Utils/Rate-Limiter/rate-limiter.js";
 const bootstrap  =async(app,express) => {
   //dotenv
   dotenv.config({ path: path.resolve("./.env") });
-  app.set('trust proxy', true);
+  app.set('trust proxy', 1);
   //rate limiter
   app.use(limiter)
   //helmet
