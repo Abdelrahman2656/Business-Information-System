@@ -6,6 +6,36 @@
 ## 📋 Project Overview
 This project is a Business Information System built using Node.js and Express.js. The system provides an API for managing students and educational courses.
 
+## 📚 API Documentation
+For detailed API documentation and testing, visit our Postman collection:
+[API Documentation](https://documenter.getpostman.com/view/29989813/2sB2cUCPRb)
+
+### API Features
+- 🔐 Secure Authentication System
+- 👨‍🎓 Student Management
+- 📚 Course Management
+- 📧 Email Notifications
+- 🔄 Real-time Updates
+
+### API Endpoints Structure
+```
+/api/v1/
+├── /auth
+│   ├── /register
+│   ├── /login
+│   └── /verify-email
+├── /students
+│   ├── GET / (List all students)
+│   ├── POST / (Create student)
+│   ├── GET /:id (Get student details)
+│   └── PUT /:id (Update student)
+└── /courses
+    ├── GET / (List all courses)
+    ├── POST / (Create course)
+    ├── GET /:id (Get course details)
+    └── PUT /:id (Update course)
+```
+
 ## ✨ Key Features
 - 👨‍🎓 Student Management
 - 📚 Course Management
@@ -39,7 +69,13 @@ Src/
 npm install
 ```
 
-2. Create a `.env` file and add required environment variables
+2. Create a `.env` file and add required environment variables:
+```env
+PORT=3000
+MONGODB_URI=your_mongodb_uri
+USER_SEND=your_email
+USER_PASS=your_email_password
+```
 
 3. Run the application:
 ```bash
