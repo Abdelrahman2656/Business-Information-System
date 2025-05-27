@@ -1,27 +1,29 @@
-# Business Information System
+# 🏢 Business Information System
+
 ## View Counter
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=BusinessInformationSystem)
-## Project Overview
+
+## 📋 Project Overview
 This project is a Business Information System built using Node.js and Express.js. The system provides an API for managing students and educational courses.
 
-## Key Features
-- Student Management
-- Course Management
-- Advanced Security with Helmet
-- Rate Limiting System
-- Global Error Handling
-- CORS Support
-- Database Integration
+## ✨ Key Features
+- 👨‍🎓 Student Management
+- 📚 Course Management
+- 🛡️ Advanced Security with Helmet
+- ⏱️ Rate Limiting System
+- ⚠️ Global Error Handling
+- 🔄 CORS Support
+- 💾 Database Integration
 
-## Technologies Used
-- Node.js
-- Express.js
-- MongoDB (Database)
-- Helmet (Security)
-- CORS
-- dotenv (Environment Variables)
+## 🛠️ Technologies Used
+- ⚡ Node.js
+- 🚀 Express.js
+- 🍃 MongoDB (Database)
+- 🛡️ Helmet (Security)
+- 🔄 CORS
+- 🔑 dotenv (Environment Variables)
 
-## Project Structure
+## 📁 Project Structure
 ```
 Src/
 ├── app.controller.js    # Main Application File
@@ -31,7 +33,7 @@ Src/
 └── Database/          # Database Files
 ```
 
-## How to Run
+## 🚀 How to Run
 1. Install dependencies:
 ```bash
 npm install
@@ -44,21 +46,19 @@ npm install
 npm start
 ```
 
-## Endpoints
+## 🔌 Endpoints
 - `/api/v1` - Student endpoints
 - `/api/v1/course` - Course endpoints
 
-## Security
-- Helmet for application security
-- Rate limiting to prevent attacks
-- Global error handling
-- CORS support
+## 🔒 Security
+- 🛡️ Helmet for application security
+- ⏱️ Rate limiting to prevent attacks
+- ⚠️ Global error handling
+- 🔄 CORS support
 
-## Contact
+## 📧 Contact
 For inquiries or support:
-- Email: a.elmonged870@gmail.com
+- 📧 Email: a.elmonged870@gmail.com
 
-
-
-## License
+## 📜 License
 All rights reserved © 2024 
