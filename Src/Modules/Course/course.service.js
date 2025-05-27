@@ -6,7 +6,7 @@ import { messages } from "../../Utils/constant/messages.js";
 
 export const toggleRegistration = async (req, res, next) => {
   try {
-    const { courseId } = req.body;
+    const { courseId, confirm } = req.body;
     const studentId = req.authUser._id;
     const studentExist = await Student.findById(studentId);
     if (!studentExist) {
@@ -77,11 +77,60 @@ export const toggleRegistration = async (req, res, next) => {
     // حفظ التحديثات في سجل الطالب
     await studentExist.save();
 
-    return res.status(200).json({
-      success: true,
-      updatedCourses: studentExist.registerCourses,
-      message: 'تم التحديث بنجاح.',
-    });
+    // إذا تم طلب تأكيد التسجيل
+    if (confirm) {
+      const registeredInCurrentSemester = studentExist.registerCourses.filter(
+        (course) => course.semester === semester && course.yearLevel === yearLevel
+      );
+
+      if (registeredInCurrentSemester.length < 5) {
+        return res.status(400).json({
+          success: false,
+          message: "لا يمكن تأكيد التسجيل. يجب تسجيل 5 مواد على الأقل للانتقال إلى الترم التالي.",
+        });
+      }
+
+      // الرد فورًا مع تأكيد الاستلام
+      res.status(200).json({
+        success: true,
+        message: "تم تأكيد التسجيل، سيتم الانتقال للترم/السنة التالية خلال 30 ثانية.",
+      });
+
+      // ⏳ تأخير 30 ثانية ثم التحديث
+      setTimeout(async () => {
+        try {
+          // 1. تعديل السعة لكل كورس مسجل حاليًا
+          for (const reg of registeredInCurrentSemester) {
+            const course = await Course.findById(reg.course);
+            if (course && course.capacity.current > 0) {
+              course.capacity.current -= 1;
+              await course.save();
+            }
+          }
+
+          // 2. حذف الكورسات القديمة من سجل الطالب
+          studentExist.registerCourses = studentExist.registerCourses.filter(
+            (course) => !(course.semester === semester && course.yearLevel === yearLevel)
+          );
+
+          // 3. ترقية الترم والسنة
+          await studentExist.advanceSemester();
+
+          // 4. حفظ الطالب بعد التعديلات
+          await studentExist.save();
+
+          console.log(`✅ الطالب ${studentExist._id} تم نقله إلى: ${studentExist.getYearLevel()} - ${studentExist.getCurrentSemester()}`);
+        } catch (err) {
+          console.error("❌ خطأ أثناء تحديث بيانات الطالب بعد تأكيد التسجيل:", err);
+        }
+      }, 30 * 1000);
+    } else {
+      return res.status(200).json({
+        success: true,
+        updatedCourses: studentExist.registerCourses,
+        message: 'تم التحديث بنجاح.',
+      });
+    }
 
   } catch (error) {
     console.error(error);
@@ -185,62 +234,3 @@ return res.status(200).json({
   message: "المواد المتاحة حسب سنتك الدراسية والترم الحالي",
 });
 }
-//-------------------------------------------------confrim course-----------------------------------------------------------------
-export const confirmCourse =async (req,res,next)=>{
-  //get studenrtID
-  const studentId = req.authUser._id
-  //student exist
-  const student = await Student.findById(studentId)
-  if(!student){
-    return next(new AppError(messages.user.notFound, 404));
-  }
-  // current year
-  const semester = student.getCurrentSemester()
-  const yearLevel = student.getYearLevel()
-  const registeredInCurrentSemester = student.registerCourses.filter(
-    (course) => course.semester === semester && course.yearLevel === yearLevel
-  );
-
-  if (registeredInCurrentSemester.length < 5) {
-    return res.status(400).json({
-      success: false,
-      message: "لا يمكن تأكيد التسجيل. يجب تسجيل 5 مواد على الأقل للانتقال إلى الترم التالي.",
-    });
-  }
-
-  // الرد فورًا مع تأكيد الاستلام
-  res.status(200).json({
-    success: true,
-    message: "تم تأكيد التسجيل، سيتم الانتقال للترم/السنة التالية خلال 30 ثانية.",
-  });
-
-   // ⏳ تأخير 30 ثانية ثم التحديث
-   setTimeout(async () => {
-    try {
-      // 1. تعديل السعة لكل كورس مسجل حاليًا
-      for (const reg of registeredInCurrentSemester) {
-        const course = await Course.findById(reg.course);
-        if (course && course.capacity.current > 0) {
-          course.capacity.current -= 1;
-          await course.save();
-        }
-      }
-
-      // 2. حذف الكورسات القديمة من سجل الطالب
-      student.registerCourses = student.registerCourses.filter(
-        (course) => !(course.semester === semester && course.yearLevel === yearLevel)
-      );
-
-      // 3. ترقية الترم والسنة
-      await student.advanceSemester();
-
-      // 4. حفظ الطالب بعد التعديلات
-      await student.save();
-
-      console.log(`✅ الطالب ${student._id} تم نقله إلى: ${student.getYearLevel()} - ${student.getCurrentSemester()}`);
-    } catch (err) {
-      console.error("❌ خطأ أثناء تحديث بيانات الطالب بعد تأكيد التسجيل:", err);
-    }
-  }, 30 * 1000);
- 
-  }
