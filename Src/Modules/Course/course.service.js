@@ -40,6 +40,14 @@ export const toggleRegistration = async (req, res, next) => {
         });
       }
 
+      // التحقق من أن المادة تنتمي لنفس الترم الحالي للطالب
+      if (courseExist.semester !== semester) {
+        return res.status(400).json({
+          success: false,
+          message: `لا يمكنك التسجيل في المادة ${courseExist.name} لأنها من الترم ${courseExist.semester} وأنت في الترم ${semester}`
+        });
+      }
+
       const isRegistered = studentExist.registerCourses.some(
         registeredCourse => registeredCourse.course.toString() === id
       );
@@ -91,10 +99,22 @@ export const toggleRegistration = async (req, res, next) => {
         (course) => course.semester === semester && course.yearLevel === yearLevel
       );
 
-      if (registeredInCurrentSemester.length < 5) {
+      // تحديد الحد الأدنى للمواد حسب الترم
+      let minRequiredCourses;
+      let errorMessage;
+      
+      if (semester === 3) {
+        minRequiredCourses = 1;
+        errorMessage = "لا يمكن تأكيد التسجيل. يجب تسجيل مادة واحدة على الأقل في الترم الثالث للانتقال إلى الترم التالي.";
+      } else {
+        minRequiredCourses = 4;
+        errorMessage = "لا يمكن تأكيد التسجيل. يجب تسجيل 4 مواد على الأقل في الترم الأول والثاني للانتقال إلى الترم التالي.";
+      }
+
+      if (registeredInCurrentSemester.length < minRequiredCourses) {
         return res.status(400).json({
           success: false,
-          message: "لا يمكن تأكيد التسجيل. يجب تسجيل 5 مواد على الأقل للانتقال إلى الترم التالي.",
+          message: errorMessage
         });
       }
 
