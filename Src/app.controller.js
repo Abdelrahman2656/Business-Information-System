@@ -4,13 +4,19 @@ import dotenv from "dotenv";
 import path from "path";
 import { insertCourses } from "../Database/add-courses.js";
 
+import helmet from "helmet";
 import dbconnection from "../Database/dbconnection.js";
 import { globalErrorHandling } from "./Middleware/asyncHandler.js";
 import { courseRouter, studentRouter } from "./Modules/index.js";
+import { limiter } from "./Utils/Rate-Limiter/rate-limiter.js";
 
 const bootstrap  =async(app,express) => {
   //dotenv
   dotenv.config({ path: path.resolve("./.env") });
+  //rate limiter
+  app.use(limiter)
+  //helmet
+  app.use(helmet())
   //use cors middleware
   app.use(cors());
   //app use json
