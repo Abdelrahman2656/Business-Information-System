@@ -8,7 +8,14 @@ import { generateToken } from "../../Utils/Token/token.js";
 //---------------------------------------Login Or Create -------------------------------------------------------
 export const loginOrCreateStudent = async (req, res, next) => {
   //get data from req
-  const { loginIdentifier, password, role ,email} = req.body;
+  const { loginIdentifier, password, role, email } = req.body;
+  
+  //check if email exists
+  const emailExists = await Student.findOne({ email: loginIdentifier });
+  if (emailExists) {
+    return next(new AppError("هذا البريد الإلكتروني مسجل بالفعل", 400));
+  }
+
   //check exist
   let userExist = await Student.findOne({
     $or: [
@@ -21,7 +28,7 @@ export const loginOrCreateStudent = async (req, res, next) => {
     if (userExist.email === loginIdentifier) {
       return next(new AppError(messages.user.customIdRequired, 400));
     }
-    let match =await comparePassword({ password, hashPassword: userExist.password });
+    let match = await comparePassword({ password, hashPassword: userExist.password });
     if (!match) {
       return next(new AppError(messages.user.Incorrect, 400));
     }
@@ -46,13 +53,14 @@ export const loginOrCreateStudent = async (req, res, next) => {
       UserData: userExist,
     });
   }
+
   //create customId
   let year = new Date().getFullYear();
   let randomId = Math.floor(100000 + Math.random() * 900000);
   let customId = `${year}${randomId}`;
   //create student
   const student = new Student({
-    email:loginIdentifier,
+    email: loginIdentifier,
     customId,
     role,
     password,
@@ -63,14 +71,14 @@ export const loginOrCreateStudent = async (req, res, next) => {
     return next(new AppError(messages.user.failToCreate, 500));
   }
   //send email 
-  await generateID(loginIdentifier,customId,password)
+  await generateID(loginIdentifier, customId, password)
 
   //send response
   return res.status(201)
     .json({
       message: messages.user.createdSuccessfully,
-      success:true,
-      StudentData:studentCreated
+      success: true,
+      StudentData: studentCreated
     });
 };
 

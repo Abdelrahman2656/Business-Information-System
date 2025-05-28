@@ -26,7 +26,8 @@ export const messages = {
     loginSuccessfully: "تم تسجيل دخول المستخدم بنجاح",
     Incorrect: "خطأ في البريد الإلكتروني أو كلمة المرور",
     AlreadyVerified: "أنت بالفعل تم التحقق منك",
-    customIdRequired:"الذي تم إرساله إلى بريدك الإلكتروني ID برجاء استخدام ال  "
+   customIdRequired: "برجاء استخدام الرقم التعريفي الذي تم إرساله إلى بريدك الإلكتروني"
+
   },
   course:{
     ...generateMessage("الماده"),

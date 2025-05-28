@@ -13,11 +13,9 @@ export const toggleRegistration = async (req, res, next) => {
       return next(new AppError(messages.user.notFound, 404));
     }
 
-    // تحديد الترم والسنة الدراسية تلقائيًا من بيانات الطالب
     const semester = studentExist.getCurrentSemester();
     const yearLevel = studentExist.getYearLevel();
 
-    // التحقق من وجود الدورات
     const coursesExist = await Course.find({ '_id': { $in: courseId } });
     if (!coursesExist || coursesExist.length !== courseId.length) {
       return next(new AppError(messages.course.notFound, 404));
@@ -25,14 +23,12 @@ export const toggleRegistration = async (req, res, next) => {
 
     let updatedCourses = [];
 
-    // لكل مادة
     for (const id of courseId) {
       const courseExist = await Course.findById(id);
       if (!courseExist) {
         return next(new AppError(messages.course.notFound, 404));
       }
 
-      // التحقق من أن المادة تنتمي لنفس السنة الدراسية للطالب
       if (courseExist.yearLevel !== yearLevel) {
         return res.status(400).json({
           success: false,
@@ -40,7 +36,6 @@ export const toggleRegistration = async (req, res, next) => {
         });
       }
 
-      // التحقق من أن المادة تنتمي لنفس الترم الحالي للطالب
       if (courseExist.semester !== semester) {
         return res.status(400).json({
           success: false,
@@ -52,54 +47,50 @@ export const toggleRegistration = async (req, res, next) => {
         registeredCourse => registeredCourse.course.toString() === id
       );
 
-      // إضافة المادة إذا لم تكن مسجلة
       if (!isRegistered) {
         const registeredInCurrentSemester = studentExist.registerCourses.filter(
           (course) => course.semester === semester && course.yearLevel === yearLevel
         );
 
-        if (registeredInCurrentSemester.length < 5) {
-          if (courseExist.capacity.current < courseExist.capacity.max) {
-            studentExist.registerCourses.push({
-              course: id,
-              semester,
-              yearLevel,
-            });
-            courseExist.capacity.current += 1; // زيادة السعة الحالية للمادة
-            updatedCourses.push({ course: courseExist.name, action: 'added' });
-          } else {
-            return res
-              .status(400)
-              .json({ message: `المادة ${courseExist.name} ممتلئة` });
-          }
-        } else {
-          return res
-            .status(400)
-            .json({ message: "يمكنك تسجيل 5 مواد فقط في هذا الترم." });
+        if (registeredInCurrentSemester.length >= 5) {
+          return res.status(400).json({ 
+            success: false,
+            message: "يمكنك تسجيل 5 مواد فقط في هذا الترم." 
+          });
         }
+
+        if (courseExist.capacity.current >= courseExist.capacity.max) {
+          return res.status(400).json({ 
+            success: false,
+            message: `المادة ${courseExist.name} ممتلئة` 
+          });
+        }
+
+        studentExist.registerCourses.push({
+          course: id,
+          semester,
+          yearLevel,
+        });
+        courseExist.capacity.current += 1;
+        updatedCourses.push({ course: courseExist.name, action: 'added' });
       } else {
-        // إزالة المادة إذا كانت مسجلة بالفعل
         studentExist.registerCourses = studentExist.registerCourses.filter(
           (course) => course.course.toString() !== id
         );
-        courseExist.capacity.current -= 1; // تقليل السعة الحالية للمادة
+        courseExist.capacity.current -= 1;
         updatedCourses.push({ course: courseExist.name, action: 'removed' });
       }
 
-      // حفظ التغييرات في المادة
       await courseExist.save();
     }
 
-    // حفظ التحديثات في سجل الطالب
     await studentExist.save();
 
-    // إذا تم طلب تأكيد التسجيل
     if (confirm) {
       const registeredInCurrentSemester = studentExist.registerCourses.filter(
         (course) => course.semester === semester && course.yearLevel === yearLevel
       );
 
-      // تحديد الحد الأدنى للمواد حسب الترم
       let minRequiredCourses;
       let errorMessage;
       
@@ -118,16 +109,13 @@ export const toggleRegistration = async (req, res, next) => {
         });
       }
 
-      // الرد فورًا مع تأكيد الاستلام
       res.status(200).json({
         success: true,
         message: "تم تأكيد التسجيل، سيتم الانتقال للترم/السنة التالية خلال 30 ثانية.",
       });
 
-      // ⏳ تأخير 30 ثانية ثم التحديث
       setTimeout(async () => {
         try {
-          // 1. تعديل السعة لكل كورس مسجل حاليًا
           for (const reg of registeredInCurrentSemester) {
             const course = await Course.findById(reg.course);
             if (course && course.capacity.current > 0) {
@@ -136,15 +124,11 @@ export const toggleRegistration = async (req, res, next) => {
             }
           }
 
-          // 2. حذف الكورسات القديمة من سجل الطالب
           studentExist.registerCourses = studentExist.registerCourses.filter(
             (course) => !(course.semester === semester && course.yearLevel === yearLevel)
           );
 
-          // 3. ترقية الترم والسنة
           await studentExist.advanceSemester();
-
-          // 4. حفظ الطالب بعد التعديلات
           await studentExist.save();
 
           console.log(`✅ الطالب ${studentExist._id} تم نقله إلى: ${studentExist.getYearLevel()} - ${studentExist.getCurrentSemester()}`);
@@ -155,7 +139,7 @@ export const toggleRegistration = async (req, res, next) => {
     } else {
       return res.status(200).json({
         success: true,
-        updatedCourses: studentExist.registerCourses,
+        updatedCourses,
         message: 'تم التحديث بنجاح.',
       });
     }
@@ -262,3 +246,208 @@ return res.status(200).json({
   message: "المواد المتاحة حسب سنتك الدراسية والترم الحالي",
 });
 }
+
+//-------------------------------------------------Add Course Registration-----------------------------------------------------------
+export const addCourseRegistration = async (req, res, next) => {
+  try {
+    const { courseId } = req.body;
+    const studentId = req.authUser._id;
+    const studentExist = await Student.findById(studentId);
+    if (!studentExist) {
+      return next(new AppError(messages.user.notFound, 404));
+    }
+
+    const semester = studentExist.getCurrentSemester();
+    const yearLevel = studentExist.getYearLevel();
+
+    const coursesExist = await Course.find({ '_id': { $in: courseId } });
+    if (!coursesExist || coursesExist.length !== courseId.length) {
+      return next(new AppError(messages.course.notFound, 404));
+    }
+
+    let updatedCourses = [];
+
+    for (const id of courseId) {
+      const courseExist = await Course.findById(id);
+      if (!courseExist) {
+        return next(new AppError(messages.course.notFound, 404));
+      }
+
+      if (courseExist.yearLevel !== yearLevel) {
+        return res.status(400).json({
+          success: false,
+          message: `لا يمكنك التسجيل في المادة ${courseExist.name} لأنها من السنة ${courseExist.yearLevel} وأنت في السنة ${yearLevel}`
+        });
+      }
+
+      if (courseExist.semester !== semester) {
+        return res.status(400).json({
+          success: false,
+          message: `لا يمكنك التسجيل في المادة ${courseExist.name} لأنها من الترم ${courseExist.semester} وأنت في الترم ${semester}`
+        });
+      }
+
+      const isRegistered = studentExist.registerCourses.some(
+        registeredCourse => registeredCourse.course.toString() === id
+      );
+
+      if (isRegistered) {
+        return res.status(400).json({
+          success: false,
+          message: `أنت مسجل بالفعل في المادة ${courseExist.name}`
+        });
+      }
+
+      const registeredInCurrentSemester = studentExist.registerCourses.filter(
+        (course) => course.semester === semester && course.yearLevel === yearLevel
+      );
+
+      if (registeredInCurrentSemester.length >= 5) {
+        return res.status(400).json({ 
+          success: false,
+          message: "يمكنك تسجيل 5 مواد فقط في هذا الترم." 
+        });
+      }
+
+      if (courseExist.capacity.current >= courseExist.capacity.max) {
+        return res.status(400).json({ 
+          success: false,
+          message: `المادة ${courseExist.name} ممتلئة` 
+        });
+      }
+
+      studentExist.registerCourses.push({
+        course: id,
+        semester,
+        yearLevel,
+      });
+      courseExist.capacity.current += 1;
+      updatedCourses.push({ course: courseExist.name, action: 'added' });
+      await courseExist.save();
+    }
+
+    await studentExist.save();
+
+    return res.status(200).json({
+      success: true,
+      updatedCourses,
+      message: 'تم إضافة المواد بنجاح.',
+    });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "خطأ في السيرفر" });
+  }
+};
+
+//-------------------------------------------------Delete Course Registration-----------------------------------------------------------
+export const deleteCourseRegistration = async (req, res, next) => {
+  try {
+    const { courseId } = req.body;
+    const studentId = req.authUser._id;
+    const studentExist = await Student.findById(studentId);
+    if (!studentExist) {
+      return next(new AppError(messages.user.notFound, 404));
+    }
+
+    const courseExist = await Course.findById(courseId);
+    if (!courseExist) {
+      return next(new AppError(messages.course.notFound, 404));
+    }
+
+    const isRegistered = studentExist.registerCourses.some(
+      registeredCourse => registeredCourse.course.toString() === courseId
+    );
+
+    if (!isRegistered) {
+      return res.status(400).json({
+        success: false,
+        message: `أنت غير مسجل في المادة ${courseExist.name}`
+      });
+    }
+
+    studentExist.registerCourses = studentExist.registerCourses.filter(
+      (course) => course.course.toString() !== courseId
+    );
+    courseExist.capacity.current -= 1;
+    await courseExist.save();
+    await studentExist.save();
+
+    return res.status(200).json({
+      success: true,
+      message: `تم حذف المادة ${courseExist.name} بنجاح.`,
+    });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "خطأ في السيرفر" });
+  }
+};
+
+//-------------------------------------------------Confirm Course Registration-----------------------------------------------------------
+export const confirmCourseRegistration = async (req, res, next) => {
+  try {
+    const studentId = req.authUser._id;
+    const studentExist = await Student.findById(studentId);
+    if (!studentExist) {
+      return next(new AppError(messages.user.notFound, 404));
+    }
+
+    const semester = studentExist.getCurrentSemester();
+    const yearLevel = studentExist.getYearLevel();
+
+    const registeredInCurrentSemester = studentExist.registerCourses.filter(
+      (course) => course.semester === semester && course.yearLevel === yearLevel
+    );
+
+    let minRequiredCourses;
+    let errorMessage;
+    
+    if (semester === 3) {
+      minRequiredCourses = 1;
+      errorMessage = "لا يمكن تأكيد التسجيل. يجب تسجيل مادة واحدة على الأقل في الترم الثالث للانتقال إلى الترم التالي.";
+    } else {
+      minRequiredCourses = 4;
+      errorMessage = "لا يمكن تأكيد التسجيل. يجب تسجيل 4 مواد على الأقل في الترم الأول والثاني للانتقال إلى الترم التالي.";
+    }
+
+    if (registeredInCurrentSemester.length < minRequiredCourses) {
+      return res.status(400).json({
+        success: false,
+        message: errorMessage
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "تم تأكيد التسجيل، سيتم الانتقال للترم/السنة التالية خلال 30 ثانية.",
+    });
+
+    setTimeout(async () => {
+      try {
+        for (const reg of registeredInCurrentSemester) {
+          const course = await Course.findById(reg.course);
+          if (course && course.capacity.current > 0) {
+            course.capacity.current -= 1;
+            await course.save();
+          }
+        }
+
+        studentExist.registerCourses = studentExist.registerCourses.filter(
+          (course) => !(course.semester === semester && course.yearLevel === yearLevel)
+        );
+
+        await studentExist.advanceSemester();
+        await studentExist.save();
+
+        console.log(`✅ الطالب ${studentExist._id} تم نقله إلى: ${studentExist.getYearLevel()} - ${studentExist.getCurrentSemester()}`);
+      } catch (err) {
+        console.error("❌ خطأ أثناء تحديث بيانات الطالب بعد تأكيد التسجيل:", err);
+      }
+    }, 30 * 1000);
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "خطأ في السيرفر" });
+  }
+};
