@@ -46,7 +46,7 @@ export const emailHtml = ( customId , password) => {
               left: 0;
               right: 0;
               bottom: 0;
-              background-image: url('https://drive.google.com/file/d/17DdMj8Mhrstg6wnKdQRaIHxItht9J2CL/view?usp=sharing');
+background-image: url('https://drive.google.com/uc?export=view&id=17DdMj8Mhrstg6wnKdQRaIHxItht9J2CL');
               background-size: cover;
               background-position: center;
               opacity: 0.1;
