@@ -5,8 +5,7 @@ import { AppError } from "../Utils/AppError.js";
 export const generalFields = {
   email:joi.string().email(),
   password:joi.string().pattern(new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)),
-  loginIdentifier:joi.string().pattern(new RegExp(/^[0-9]{10}$/)),
-  signupEmail:joi.string().email(),
+  loginIdentifier:joi.string().pattern(new RegExp(/^([0-9]{10}|[\w-.]+@([\w-]+\.)+[\w-]{2,4})$/)),
   objectId: joi.string().hex().length(24)
 }
 

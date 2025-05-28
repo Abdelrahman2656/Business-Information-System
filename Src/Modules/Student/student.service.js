@@ -10,7 +10,8 @@ export const loginOrCreateStudent = async (req, res, next) => {
   //get data from req
   const { loginIdentifier, password, role, email } = req.body;
   
- 
+
+  
 
   //check if email exists
   const emailExists = await Student.findOne({ email: loginIdentifier });
