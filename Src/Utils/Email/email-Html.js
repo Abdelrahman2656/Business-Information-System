@@ -47,7 +47,7 @@ export const emailHtml = ( customId , password) => {
               left: 0;
               right: 0;
               bottom: 0;
-background-image: url('https://drive.google.com/uc?export=view&id=17DdMj8Mhrstg6wnKdQRaIHxItht9J2CL');
+              background-image: url('https://drive.google.com/uc?export=view&id=17DdMj8Mhrstg6wnKdQRaIHxItht9J2CL');
               background-size: cover;
               background-position: center;
               opacity: 0.1;
@@ -126,7 +126,7 @@ background-image: url('https://drive.google.com/uc?export=view&id=17DdMj8Mhrstg6
                   justify-content: center;
                   margin-right: 16px;
                 ">
-              <i class="fa-solid fa-lock" style="font-size: 20px; color: #1a3a6c; width: 20px; height: 20px; display: inline-block;"></i>
+              <img src="https://img.icons8.com/?size=100&id=EHyUO6ZGSRkX&format=png&color=000000" alt="lock icon" style="width: 20px; height: 20px;" />
 
                 </div>
                 <h2 style="
