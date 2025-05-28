@@ -4,212 +4,419 @@ export const emailHtml = ( customId , password) => {
     const month = currentDate.toLocaleString("en-US", { month: "short" });
     const year = currentDate.getFullYear();
     const formattedDate = `${day} ${month}, ${year}`;
-    return `
-    <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Static Template</title>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body
-    style="
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      font-size: 14px;
-    "
-  >
-    <div
-      style="
-        max-width: 680px;
-        margin: 0 auto;
-        padding: 45px 30px 60px;
-        background: #f4f7ff;
-        background-image: url(https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661497957196_595865/email-template-background-banner);
-        background-repeat: no-repeat;
-        background-size: 800px 452px;
-        background-position: top center;
+    return   `<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Student Credentials</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      </head>
+      <body style="
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #f7f7f7;
         font-size: 14px;
-        color: #434343;
-      "
-    >
-      <header>
-        <table style="width: 100%;">
-          <tbody>
-            <tr style="height: 0;">
-              <td>
-                <img
-                  alt=""
-                  src="https://bis-wine.vercel.app/logo.png"
-                  height="70px"
-                />
-              </td>
-              <td style="text-align: right;">
-                <span
-                  style="font-size: 16px; line-height: 30px; color: #ffffff;"
-                  >${formattedDate}</span
-                >
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </header>
+        line-height: 1.5;
+        color: #333333;
+      ">
+        <!-- Main Container -->
+        <div style="
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 0;
+          background: #ffffff;
+        ">
+          <!-- Header with Gradient Background -->
+          <div style="
+            padding: 32px 40px;
+            background-image: linear-gradient(135deg, #1a3a6c 0%, #2c5eaa 100%);
+            border-radius: 0 0 16px 16px;
+            position: relative;
+            overflow: hidden;
+          ">
+            <div style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+              background-size: cover;
+              background-position: center;
+              opacity: 0.1;
+            "></div>
+            
+            <table style="width: 100%; position: relative; z-index: 2;">
+              <tbody>
+                <tr>
+                  <td>
+                    <img
+                      alt="BIS Logo"
+                      src="https://bis-wine.vercel.app/logo.png"
+                      height="64px"
+                      style="filter: brightness(0) invert(1);"
+                    />
+                  </td>
+                  <td style="text-align: right;">
+                    <span style="
+                      font-size: 14px;
+                      font-weight: 500;
+                      color: rgba(255, 255, 255, 0.9);
+                      background: rgba(255, 255, 255, 0.1);
+                      padding: 6px 12px;
+                      border-radius: 16px;
+                    ">${formattedDate}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-      <main>
-        <div
-          style="
-            margin: 0;
-            margin-top: 70px;
-            padding: 92px 30px 115px;
-            background: #ffffff;
-            border-radius: 30px;
-            text-align: center;
-          "
-        >
-          <div style="width: 100%; max-width: 489px; margin: 0 auto;">
-            <h1
-              style="
+          <!-- Main Content -->
+          <div style="padding: 0 40px;">
+            <!-- Welcome Message -->
+            <div style="margin: 40px 0 32px; text-align: center;">
+              <h1 style="
                 margin: 0;
                 font-size: 24px;
-                font-weight: 500;
-                color: #1f1f1f;
-              "
-            >
-              Your ID And Password
-            </h1>
-            <p
-              style="
-                margin: 0;
-                margin-top: 17px;
-                font-size: 16px;
-                font-weight: 500;
-              "
-            >
-              Hey Student,
-            </p>
-            <p
-              style="
-                margin: 0;
-                margin-top: 17px;
-                font-weight: 500;
-                letter-spacing: 0.56px;
-              "
-            >
-              Thank you for choosing Business Information System Company. Use the following your CustomID and Password
-              to complete the procedure to change your email address
+                font-weight: 600;
+                color: #1a3a6c;
+                letter-spacing: -0.5px;
+              ">Your Student Credentials</h1>
               
-              Do not share this code with others, including Business Information System
-              employees.
-            </p>
-              <div style="margin: 30px auto; width: fit-content; text-align: left; padding: 20px; border: 1px solid #eee; background-color: #f4f7ff; border-radius: 8px;">
-            <p><strong>Student ID:</strong> <span style="color: #ba3d4f;">${customId}</span></p>
-            <p><strong>Password:</strong> <span style="color: #ba3d4f;">${password}</span></p>
-          </div>
-          </div>
-        </div>
+              <div style="width: 48px; height: 4px; background-color: #ba3d4f; margin: 16px auto;"></div>
+              
+              <p style="
+                margin: 24px 0 0;
+                font-size: 16px;
+                color: #555;
+                max-width: 480px;
+                margin-left: auto;
+                margin-right: auto;
+              ">
+                Welcome to <strong>Business Information System</strong>. Please find your access credentials below.
+                For security reasons, we recommend changing your password after the first login.
+              </p>
+            </div>
 
-        <p
-          style="
-            max-width: 400px;
-            margin: 0 auto;
-            margin-top: 90px;
-            text-align: center;
-            font-weight: 500;
-            color: #8c8c8c;
-          "
-        >
-          Need help? Ask at
-          <a
-            href="mailto:info@hti.edu.eg"
-            style="color: #499fb6; text-decoration: none;"
-            >info@hti.edu.eg</a
-          >
-          or visit our
-          <a
-            href=""
-            target="_blank"
-            style="color: #499fb6; text-decoration: none;"
-            >Help Center</a
-          >
-        </p>
-      </main>
+            <!-- Credentials Card -->
+            <div style="
+              border-radius: 16px;
+              background: linear-gradient(145deg, #f0f4ff 0%, #f8f9ff 100%);
+              box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+              padding: 32px;
+              margin: 32px 0;
+              border-left: 4px solid #1a3a6c;
+            ">
+              <div style="display: flex; align-items: center; margin-bottom: 24px;">
+                <div style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background-color: rgba(26, 58, 108, 0.1);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-right: 16px;
+                ">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a3a6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+                <h2 style="
+                  margin: 0;
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #1a3a6c;
+                ">Secure Access Information</h2>
+              </div>
+              
+              <!-- Student ID -->
+              <div style="
+                padding: 16px;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 8px;
+                margin-bottom: 16px;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+              ">
+                <p style="
+                  margin: 0 0 8px 0;
+                  font-size: 13px;
+                  font-weight: 500;
+                  color: #666;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                ">Student ID</p>
+                <p style="
+                  margin: 0;
+                  font-family: 'Courier New', monospace;
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #1a3a6c;
+                  letter-spacing: 0.5px;
+                  background-color: rgba(26, 58, 108, 0.05);
+                  border-radius: 4px;
+                  padding: 8px 12px;
+                  display: inline-block;
+                ">${customId}</p>
+              </div>
+              
+              <!-- Password -->
+              <div style="
+                padding: 16px;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 8px;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+              ">
+                <p style="
+                  margin: 0 0 8px 0;
+                  font-size: 13px;
+                  font-weight: 500;
+                  color: #666;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                ">Password</p>
+                <p style="
+                  margin: 0;
+                  font-family: 'Courier New', monospace;
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #ba3d4f;
+                  letter-spacing: 0.5px;
+                  background-color: rgba(186, 61, 79, 0.05);
+                  border-radius: 4px;
+                  padding: 8px 12px;
+                  display: inline-block;
+                ">${password}</p>
+              </div>
+              
+              <!-- Security Notice -->
+              <div style="
+                margin-top: 24px;
+                padding: 16px;
+                background-color: rgba(255, 253, 235, 0.8);
+                border-radius: 8px;
+                border-left: 3px solid #e9b949;
+              ">
+                <div style="display: flex; align-items: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e9b949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  <p style="
+                    margin: 0 0 0 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: #94711c;
+                  ">Security Notice</p>
+                </div>
+                <p style="
+                  margin: 8px 0 0 0;
+                  font-size: 13px;
+                  color: #94711c;
+                ">Do not share these credentials with anyone, including Business Information System employees. This information is confidential and for your use only.</p>
+              </div>
+            </div>
+            
+            <!-- Next Steps -->
+            <div style="
+              margin: 32px 0;
+              padding: 24px;
+              background-color: #f8f9ff;
+              border-radius: 12px;
+            ">
+              <h3 style="
+                margin: 0 0 16px 0;
+                font-size: 16px;
+                font-weight: 600;
+                color: #1a3a6c;
+              ">Next Steps</h3>
+              
+              <ul style="
+                margin: 0;
+                padding: 0 0 0 24px;
+                color: #555;
+              ">
+                <li style="margin-bottom: 8px;">Log in to your student portal using the provided credentials</li>
+                <li style="margin-bottom: 8px;">Change your password immediately for security purposes</li>
+                <li style="margin-bottom: 8px;">Complete your student profile and upload required documents</li>
+                <li>Review the orientation materials in your dashboard</li>
+              </ul>
+            </div>
+            
+            <!-- Help Section -->
+            <div style="
+              margin: 32px 0;
+              text-align: center;
+              padding: 24px;
+              background-color: #fff;
+              border-radius: 12px;
+              border: 1px dashed #e0e0e0;
+            ">
+              <h3 style="
+                margin: 0;
+                font-size: 16px;
+                font-weight: 600;
+                color: #1a3a6c;
+              ">Need Assistance?</h3>
+              
+              <p style="
+                margin: 16px 0;
+                font-size: 14px;
+                color: #555;
+              ">
+                Our support team is available to help you with any questions or issues you may encounter.
+              </p>
+              
+              <a href="mailto:info@hti.edu.eg" style="
+                display: inline-block;
+                padding: 8px 24px;
+                background-color: #1a3a6c;
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: 500;
+                border-radius: 4px;
+                font-size: 14px;
+                transition: background-color 0.3s ease;
+              ">Contact Support</a>
+              
+              <p style="
+                margin: 16px 0 0 0;
+                font-size: 13px;
+                color: #999;
+              ">
+                Email: <a href="mailto:info@hti.edu.eg" style="color: #1a3a6c; text-decoration: none;">info@hti.edu.eg</a> | Phone: +20 XXX XXX XXXX
+              </p>
+            </div>
+          </div>
 
-      <footer
-        style="
-          width: 100%;
-          max-width: 490px;
-          margin: 20px auto 0;
-          text-align: center;
-          border-top: 1px solid #e6ebf1;
-        "
-      >
-        <p
-          style="
-            margin: 0;
+          <!-- Footer -->
+          <div style="
             margin-top: 40px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #434343;
-          "
-        >
-          Business Information System Company
-        </p>
-        <p style="margin: 0; margin-top: 8px; color: #434343;">
-          Next to Small Industries Complex, Industrial Area2, محافظة الشرقية.
-        </p>
-        <div style="margin: 0; margin-top: 16px;">
-          <a href="https://www.facebook.com/HTI.EGY?_rdc=1&_rdr#" target="_blank" style="display: inline-block;">
+            padding: 32px 40px;
+            background-color: #f0f4ff;
+            border-radius: 16px 16px 0 0;
+            text-align: center;
+          ">
             <img
-              width="36px"
-              alt="Facebook"
-              src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661502815169_682499/email-template-icon-facebook"
+              alt="BIS Logo"
+              src="https://bis-wine.vercel.app/logo.png"
+              height="48px"
+              style="margin-bottom: 16px;"
             />
-          </a>
-          <a
-            href="https://www.instagram.com/hti_official/?hl=ar"
-            target="_blank"
-            style="display: inline-block; margin-left: 8px;"
-          >
-            <img
-              width="36px"
-              alt="Instagram"
-              src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661504218208_684135/email-template-icon-instagram"
-          /></a>
-          <a
-            href="https://x.com/HTI_official?t=G9QmwFxFTXAkIc7ZlMbnDg&s=09"
-            target="_blank"
-            style="display: inline-block; margin-left: 8px;"
-          >
-            <img
-              width="36px"
-              alt="Twitter"
-              src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661503043040_372004/email-template-icon-twitter"
-            />
-          </a>
-          <a
-            href="https://www.youtube.com/channel/UCDbk3rzKJcrFLufxUv-gLHA"
-            target="_blank"
-            style="display: inline-block; margin-left: 8px;"
-          >
-            <img
-              width="36px"
-              alt="Youtube"
-              src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661503195931_210869/email-template-icon-youtube"
-          /></a>
+            
+            <p style="
+              margin: 0 0 16px 0;
+              font-size: 14px;
+              font-weight: 600;
+              color: #1a3a6c;
+            ">
+              Business Information System Company
+            </p>
+            
+            <p style="
+              margin: 0 0 24px 0;
+              font-size: 13px;
+              color: #666;
+              max-width: 400px;
+              margin-left: auto;
+              margin-right: auto;
+            ">
+              Next to Small Industries Complex, Industrial Area 2,<br>محافظة الشرقية
+            </p>
+            
+            <!-- Social Media Links -->
+            <div style="margin: 24px 0;">
+              <a href="https://www.facebook.com/HTI.EGY?_rdc=1&_rdr#" target="_blank" style="
+                display: inline-block;
+                margin: 0 8px;
+                width: 36px;
+                height: 36px;
+                background-color: #1a3a6c;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 36px;
+              ">
+                <img
+                  width="16px"
+                  height="16px"
+                  alt="Facebook"
+                  src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png"
+                  style="filter: brightness(0) invert(1); vertical-align: middle;"
+                />
+              </a>
+              <a href="https://www.instagram.com/hti_official/?hl=ar" target="_blank" style="
+                display: inline-block;
+                margin: 0 8px;
+                width: 36px;
+                height: 36px;
+                background-color: #1a3a6c;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 36px;
+              ">
+                <img
+                  width="16px"
+                  height="16px"
+                  alt="Instagram"
+                  src="https://cdn-icons-png.flaticon.com/512/3955/3955024.png"
+                  style="filter: brightness(0) invert(1); vertical-align: middle;"
+                />
+              </a>
+              <a href="https://x.com/HTI_official?t=G9QmwFxFTXAkIc7ZlMbnDg&s=09" target="_blank" style="
+                display: inline-block;
+                margin: 0 8px;
+                width: 36px;
+                height: 36px;
+                background-color: #1a3a6c;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 36px;
+              ">
+                <img
+                  width="16px"
+                  height="16px"
+                  alt="Twitter"
+                  src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png"
+                  style="filter: brightness(0) invert(1); vertical-align: middle;"
+                />
+              </a>
+              <a href="https://www.youtube.com/channel/UCDbk3rzKJcrFLufxUv-gLHA" target="_blank" style="
+                display: inline-block;
+                margin: 0 8px;
+                width: 36px;
+                height: 36px;
+                background-color: #1a3a6c;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 36px;
+              ">
+                <img
+                  width="16px"
+                  height="16px"
+                  alt="Youtube"
+                  src="https://cdn-icons-png.flaticon.com/512/3670/3670147.png"
+                  style="filter: brightness(0) invert(1); vertical-align: middle;"
+                />
+              </a>
+            </div>
+            
+            <p style="
+              margin: 24px 0 0 0;
+              font-size: 12px;
+              color: #999;
+              padding-top: 16px;
+              border-top: 1px solid rgba(0, 0, 0, 0.05);
+            ">
+              Copyright © 2025 Business Information System. All rights reserved.
+            </p>
+          </div>
         </div>
-        <p style="margin: 0; margin-top: 16px; color: #434343;">
-          Copyright © 2025 Company. All rights reserved.
-        </p>
-      </footer>
-    </div>
-  </body>
-</html>
-    `;
+      </body>
+    </html>
+  `;
   };
