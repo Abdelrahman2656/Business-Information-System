@@ -154,18 +154,39 @@ export const toggleRegistration = async (req, res, next) => {
 //-------------------------------------------------get register course-----------------------------------------------------------
 export const registerCourse = async (req, res, next) => {
   //get data from params
-  const studentId  = req.authUser._id;
-  const student = await Student.findById(studentId);
-  const TotalStudent = await Student.countDocuments()
+  const studentId = req.authUser._id;
+  const student = await Student.findById(studentId).populate('registerCourses.course');
+  const TotalStudent = await Student.countDocuments();
   if (!student) {
     return next(new AppError(messages.user.notFound, 404));
   }
-  const registeredCourses = student.registerCourses;
+
+  const registeredCourses = student.registerCourses.map(reg => ({
+    _id: reg.course._id,
+    courseCode: reg.course.courseCode,
+    name: reg.course.name,
+    credits: reg.course.credits,
+    instructor: reg.course.instructor,
+    day: reg.course.day,
+    yearLevel: reg.course.yearLevel,
+    semester: reg.course.semester,
+    capacity: reg.course.capacity,
+    registrationDetails: {
+      semester: reg.semester,
+      yearLevel: reg.yearLevel
+    }
+  }));
+
   const courseCount = registeredCourses.length;
+  
   //send response
   return res
     .status(200)
-    .json({ success: true,courseCount ,courses: student.registerCourses });
+    .json({ 
+      success: true,
+      courseCount,
+      courses: registeredCourses 
+    });
 };
 //-------------------------------------------------get unRegister course-----------------------------------------------------------
 export const unRegisterCourses = async (req, res, next) => {
