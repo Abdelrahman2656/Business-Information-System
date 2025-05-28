@@ -46,7 +46,7 @@ export const emailHtml = ( customId , password) => {
               left: 0;
               right: 0;
               bottom: 0;
-              background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+              background-image: url('https://drive.google.com/file/d/17DdMj8Mhrstg6wnKdQRaIHxItht9J2CL/view?usp=sharing');
               background-size: cover;
               background-position: center;
               opacity: 0.1;
@@ -125,7 +125,7 @@ export const emailHtml = ( customId , password) => {
                   justify-content: center;
                   margin-right: 16px;
                 ">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a3a6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg xmlns="https://drive.google.com/file/d/16drch0AwjkCr-_hRP_FbGTDA0a44KWyl/view?usp=sharing" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a3a6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                     <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                   </svg>

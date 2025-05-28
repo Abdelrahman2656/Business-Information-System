@@ -2,28 +2,40 @@ import nodemailer from 'nodemailer'
 
 export const sendEmail = async ({ to, subject, html }) => {
     const transporter = nodemailer.createTransport({
-        service: "gmail",
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
         auth: {
             user: process.env.USER_SEND,
             pass: process.env.USER_PASS,
         },
         tls: {
-            rejectUnauthorized: false
+            rejectUnauthorized: false,
+            ciphers: 'SSLv3'
         }
     })
 
     const mailOptions = {
-        from: `"Business Information System" <${process.env.USER_SEND}>`,
+        from: {
+            name: "Business Information System",
+            address: process.env.USER_SEND
+        },
         to,
         subject,
         html,
+        priority: 'high',
         headers: {
             'X-Priority': '1',
             'X-MSMail-Priority': 'High',
             'Importance': 'high',
             'X-Mailer': 'Business Information System',
             'List-Unsubscribe': `<mailto:${process.env.USER_SEND}?subject=unsubscribe>`,
-            'Precedence': 'bulk'
+            'Precedence': 'bulk',
+            'X-Auto-Response-Suppress': 'OOF, AutoReply',
+            'X-MS-Exchange-Organization-AuthAs': 'Internal',
+            'X-MS-Exchange-Organization-AuthMechanism': '04',
+            'X-MS-Exchange-Organization-AuthSource': 'Business Information System',
+            'X-MS-Exchange-Organization-SCL': '-1'
         }
     }
 
