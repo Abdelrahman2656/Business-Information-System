@@ -10,6 +10,12 @@ export const loginOrCreateStudent = async (req, res, next) => {
   //get data from req
   const { loginIdentifier, password, role, email } = req.body;
   
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(loginIdentifier)) {
+    return next(new AppError("يرجى إدخال بريد إلكتروني صحيح", 400));
+  }
+
   //check if email exists
   const emailExists = await Student.findOne({ email: loginIdentifier });
   if (emailExists) {
