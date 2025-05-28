@@ -22,7 +22,7 @@ export const sendEmail = async ({ to, subject, html }) => {
             'X-MSMail-Priority': 'High',
             'Importance': 'high',
             'X-Mailer': 'Business Information System',
-            'List-Unsubscribe': `<mailto:${process.env.EMAIL}?subject=unsubscribe>`,
+            'List-Unsubscribe': `<mailto:${process.env.USER_SEND}?subject=unsubscribe>`,
             'Precedence': 'bulk'
         }
     }
