@@ -32,7 +32,7 @@ export const emailHtml = ( customId , password) => {
         margin: 0 auto;
         padding: 45px 30px 60px;
         background: #f4f7ff;
-        background-image: url(https://bis-wine.vercel.app/logo.png);
+        background-image: url(https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1661497957196_595865/email-template-background-banner);
         background-repeat: no-repeat;
         background-size: 800px 452px;
         background-position: top center;
