@@ -446,7 +446,21 @@ export const addCourseRegistration = async (req, res, next) => {
         yearLevel,
       });
       courseExist.capacity.current += 1;
-      updatedCourses.push({ course: courseExist.name, action: 'added' });
+      updatedCourses.push({
+        course: courseExist.name,
+        action: 'added',
+        courseDetails: {
+          _id: courseExist._id,
+          courseCode: courseExist.courseCode,
+          name: courseExist.name,
+          credits: courseExist.credits,
+          instructor: courseExist.instructor,
+          day: courseExist.day,
+          yearLevel: courseExist.yearLevel,
+          semester: courseExist.semester,
+          capacity: courseExist.capacity
+        }
+      });
       await courseExist.save();
     }
 
