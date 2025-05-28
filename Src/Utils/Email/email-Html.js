@@ -48,7 +48,7 @@ export const emailHtml = ( customId , password) => {
                 <img
                   alt=""
                   src="https://bis-wine.vercel.app/logo.png"
-                  height="30px"
+                  height="70px"
                 />
               </td>
               <td style="text-align: right;">
