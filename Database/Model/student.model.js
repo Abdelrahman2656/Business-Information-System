@@ -48,7 +48,14 @@ const studentSchema = new Schema(
         course: { type: Schema.Types.ObjectId, ref: "Course" },
         semester: String,
         yearLevel: String,
-        
+        _id:false
+    }],
+    confirmedCourses: [{
+      course: { type: Schema.Types.ObjectId, ref: "Course" },
+      courseId: { type: String, required: true },
+      semester: String,
+      yearLevel: String,
+      confirmedAt: { type: Date, default: Date.now }
     }]
   },
   {
@@ -74,8 +81,40 @@ studentSchema.methods.getYearLevel=function(){
 studentSchema.methods.getCurrentSemester=function(){
   return this.currentSemester
 }
+//get confirmed courses for specific semester
+studentSchema.methods.getConfirmedCoursesBySemester = function(semester, yearLevel) {
+  return this.confirmedCourses.filter(course => 
+    course.semester === semester && course.yearLevel === yearLevel
+  );
+}
+
+//get all confirmed courses
+studentSchema.methods.getAllConfirmedCourses = function() {
+  return this.confirmedCourses;
+}
+
 //next semester
-studentSchema.methods.advanceSemester=function(){
+studentSchema.methods.advanceSemester=async function(){
+  // Add current semester courses to confirmed courses before advancing
+  const currentSemester = this.currentSemester;
+  const currentYearLevel = this.getYearLevel();
+  
+  const currentSemesterCourses = this.registerCourses.filter(
+    course => course.semester === currentSemester && course.yearLevel === currentYearLevel
+  );
+
+  // Add to confirmed courses
+  this.confirmedCourses.push(...currentSemesterCourses.map(course => ({
+    ...course,
+    confirmedAt: new Date()
+  })));
+
+  // Clear current semester courses
+  this.registerCourses = this.registerCourses.filter(
+    course => !(course.semester === currentSemester && course.yearLevel === currentYearLevel)
+  );
+
+  // Advance semester
   if(this.currentSemester == "fall"){
     this.currentSemester = "spring"
   }else if(this.currentSemester =="spring"){
