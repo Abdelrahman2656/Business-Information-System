@@ -11,7 +11,6 @@ export const emailHtml = (customId, password) => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
         <title>Student Credentials</title>
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -47,7 +46,7 @@ export const emailHtml = (customId, password) => {
               left: 0;
               right: 0;
               bottom: 0;
-              background-image: url('https://bis-wine.vercel.app/mailImage.jpg');
+              background-image: url('https://bis-wine.vercel.app/mailImage.jpg') !important;
               background-size: cover;
               background-position: center;
               opacity: 0.1;
@@ -120,8 +119,8 @@ export const emailHtml = (customId, password) => {
             border-radius: 50%;
             background-color: rgba(26, 58, 108, 0.1);
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: center !important;
+            justify-content: center !important;
             margin-right: 16px;
             ">
             <img src="https://img.icons8.com/?size=100&id=EHyUO6ZGSRkX&format=png&color=000000" 
