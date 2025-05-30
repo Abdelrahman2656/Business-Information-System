@@ -292,7 +292,7 @@ export const emailHtml = (customId, password) => {
                 font-size: 13px;
                 color: #999;
               ">
-                Email: <a href="mailto:info@hti.edu.eg" style="color: #1a3a6c; text-decoration: none;">info@hti.edu.eg</a> | Phone: +20 XXX XXX XXXX
+                Email: <a href="mailto:info@hti.edu.eg" style="color: #1a3a6c; text-decoration: none;">info@hti.edu.eg</a> | Phone: 055 4351292
               </p>
             </div>
           </div>
