@@ -126,7 +126,7 @@ export const emailHtml = (customId, password) => {
             ">
             <img src="https://img.icons8.com/?size=100&id=EHyUO6ZGSRkX&format=png&color=000000" 
             alt="lock icon"  style="width: 20px; height: 20px; display: block;" />
-</div>
+            </div>
                 <h2 style="
                   margin: 0;
                   font-size: 18px;
