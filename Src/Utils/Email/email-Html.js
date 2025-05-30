@@ -1,10 +1,10 @@
-export const emailHtml = ( customId , password) => {
-    const currentDate = new Date();
-    const day = currentDate.getDate();
-    const month = currentDate.toLocaleString("en-US", { month: "short" });
-    const year = currentDate.getFullYear();
-    const formattedDate = `${day} ${month}, ${year}`;
-    return    `
+export const emailHtml = (customId, password) => {
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = currentDate.toLocaleString("en-US", { month: "short" });
+  const year = currentDate.getFullYear();
+  const formattedDate = `${day} ${month}, ${year}`;
+  return `
     <!DOCTYPE html>
     <html lang="en">
       <head>
@@ -115,20 +115,20 @@ export const emailHtml = ( customId , password) => {
               margin: 32px 0;
               border-left: 4px solid #1a3a6c;
             ">
-              <div style="display: flex; align-items: center; margin-bottom: 24px;">
-                <div style="
-                  width: 40px;
-                  height: 40px;
-                  border-radius: 50%;
-                  background-color: rgba(26, 58, 108, 0.1);
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  margin-right: 16px;
-                ">
-           <img src="https://img.icons8.com/?size=100&id=EHyUO6ZGSRkX&format=png&color=000000" alt="lock icon" style="width: 20px; height: 20px; display: block;" />
-
-                </div>
+            <div style="
+             width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(26, 58, 108, 0.1);
+            display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+">
+  <img src="https://img.icons8.com/?size=100&id=EHyUO6ZGSRkX&format=png&color=000000" 
+       alt="lock icon" 
+       style="width: 20px; height: 20px; display: block;" />
+</div>
                 <h2 style="
                   margin: 0;
                   font-size: 18px;
@@ -422,4 +422,4 @@ export const emailHtml = ( customId , password) => {
       </body>
     </html>
   `;
-}
+};
