@@ -5,7 +5,7 @@ export const emailHtml = (customId, password) => {
   const year = currentDate.getFullYear();
   const formattedDate = `${day} ${month}, ${year}`;
   return `
-<!DOCTYPE html>
+  <!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -115,19 +115,17 @@ export const emailHtml = (customId, password) => {
               margin: 32px 0;
               border-left: 4px solid #1a3a6c;
             ">
-            <div style="
-             width: 40px;
+            <div style="width: 40px;
             height: 40px;
             border-radius: 50%;
             background-color: rgba(26, 58, 108, 0.1);
             display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 16px;
-">
-  <img src="https://img.icons8.com/?size=100&id=EHyUO6ZGSRkX&format=png&color=000000" 
-       alt="lock icon" 
-       style="width: 20px; height: 20px; display: block;" />
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            ">
+            <img src="https://img.icons8.com/?size=100&id=EHyUO6ZGSRkX&format=png&color=000000" 
+            alt="lock icon"  style="width: 20px; height: 20px; display: block;" />
 </div>
                 <h2 style="
                   margin: 0;
@@ -292,7 +290,7 @@ export const emailHtml = (customId, password) => {
                 font-size: 13px;
                 color: #999;
               ">
-                Email: <a href="mailto:info@hti.edu.eg" style="color: #1a3a6c; text-decoration: none;">info@hti.edu.eg</a> | Phone: 055 4351292
+                Email: <a href="mailto:info@hti.edu.eg" style="color: #1a3a6c; text-decoration: none;">info@hti.edu.eg</a> | Phone: +20 XXX XXX XXXX
               </p>
             </div>
           </div>
