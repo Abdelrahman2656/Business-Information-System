@@ -5,205 +5,114 @@ export const emailHtml = (customId, password) => {
   const year = currentDate.getFullYear();
   const formattedDate = `${day} ${month}, ${year}`;
   return `
-    <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-      <title>Student Credentials</title>
-     
-    </head>
-    <body style="
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f7f7f7;
-      font-size: 14px;
-      line-height: 1.5;
-      color: #333333;
-    ">
-      <div style="
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 0;
-        background: #ffffff;
+  <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Student Credentials</title>
+      </head>
+      <body style="
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333333;
       ">
         <div style="
-          padding: 32px 40px;
-          background-image: linear-gradient(135deg, #1a3a6c 0%, #2c5eaa 100%);
-          border-radius: 0 0 16px 16px;
-          position: relative;
-          overflow: hidden;
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+          background: #ffffff;
         ">
-   
+          <div style="
+            padding: 20px;
+            background: #1a3a6c;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+          ">
+            <h1 style="margin: 0;">Your Student Credentials</h1>
+            <p style="margin: 10px 0 0;">${formattedDate}</p>
+          </div>
 
-          <table style="width: 100%; position: relative; z-index: 2;">
-            <tbody>
-              <tr>
-               
-                <td style="text-align: right;">
-                  <span style="
-                    font-size: 14px;
-                    font-weight: 500;
-                    color: rgba(255, 255, 255, 0.9) !important;
-                    background: rgba(255, 255, 255, 0.1) !important;
-                    padding: 6px 12px;
-                    border-radius: 16px;
-                  ">${formattedDate}</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="padding: 0 40px;">
-          <div style="margin: 40px 0 32px; text-align: center;">
-            <h1 style="
-              margin: 0;
-              font-size: 24px;
-              font-weight: 600;
-              color: #1a3a6c;
-              letter-spacing: -0.5px;
-            ">Your Student Credentials</h1>
-            <div style="width: 48px; height: 4px; background-color: #ba3d4f; margin: 16px auto;"></div>
-            <p style="
-              margin: 24px 0 0;
-              font-size: 16px;
-              color: #555;
-              max-width: 480px;
-              margin-left: auto;
-              margin-right: auto;
-            ">
+          <div style="padding: 20px;">
+            <p style="margin: 0 0 20px;">
               Welcome to <strong>Business Information System</strong>. Please find your access credentials below.
               For security reasons, we recommend changing your password after the first login.
             </p>
-          </div>
-
-          <div style="
-            border-radius: 16px;
-            background: linear-gradient(145deg, #f0f4ff 0%, #f8f9ff 100%);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            padding: 32px;
-            margin: 32px 0;
-            border-left: 4px solid #1a3a6c;
-          ">
-            <div style="display: flex; align-items: center; margin-bottom: 16px;">
-              
-              <h2 style="
-                margin: 0;
-                font-size: 18px;
-                font-weight: 600;
-                color: #1a3a6c;
-              ">Secure Access Information</h2>
-            </div>
 
             <div style="
-              padding: 16px;
-              background-color: rgba(255, 255, 255, 0.8);
+              background: #f8f9ff;
+              padding: 20px;
               border-radius: 8px;
-              margin-bottom: 16px;
-              border: 1px solid rgba(0, 0, 0, 0.05);
+              margin-bottom: 20px;
             ">
-              <p style="
-                margin: 0 0 8px 0;
-                font-size: 13px;
-                font-weight: 500;
-                color: #666;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-              ">Student ID</p>
+              <h2 style="margin: 0 0 15px; color: #1a3a6c;">Student ID</h2>
               <p style="
                 margin: 0;
-                font-family: 'Courier New', monospace;
+                font-family: monospace;
                 font-size: 18px;
-                font-weight: 600;
-                color: #1a3a6c;
-                letter-spacing: 0.5px;
-                background-color: rgba(26, 58, 108, 0.05);
+                background: #fff;
+                padding: 10px;
                 border-radius: 4px;
-                padding: 8px 12px;
-                display: inline-block;
               ">${customId}</p>
             </div>
 
             <div style="
-              padding: 16px;
-              background-color: rgba(255, 255, 255, 0.8);
+              background: #f8f9ff;
+              padding: 20px;
               border-radius: 8px;
-              border: 1px solid rgba(0, 0, 0, 0.05);
+              margin-bottom: 20px;
             ">
-              <p style="
-                margin: 0 0 8px 0;
-                font-size: 13px;
-                font-weight: 500;
-                color: #666;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-              ">Password</p>
+              <h2 style="margin: 0 0 15px; color: #1a3a6c;">Password</h2>
               <p style="
                 margin: 0;
-                font-family: 'Courier New', monospace;
+                font-family: monospace;
                 font-size: 18px;
-                font-weight: 600;
-                color: #ba3d4f;
-                letter-spacing: 0.5px;
-                background-color: rgba(186, 61, 79, 0.05);
+                background: #fff;
+                padding: 10px;
                 border-radius: 4px;
-                padding: 8px 12px;
-                display: inline-block;
+                color: #ba3d4f;
               ">${password}</p>
             </div>
 
             <div style="
-              margin-top: 24px;
-              padding: 16px;
-              background-color: rgba(255, 253, 235, 0.8);
+              background: #fff3cd;
+              padding: 15px;
               border-radius: 8px;
-              border-left: 3px solid #e9b949;
+              margin-bottom: 20px;
             ">
-              <div style="display: flex; align-items: center;">
-              
-                <p style="
-                  margin: 0 0 0 8px;
-                  font-size: 13px;
-                  font-weight: 500;
-                  color: #94711c;
-                ">Security Notice</p>
-              </div>
-              <p style="
-                margin: 8px 0 0 0;
-                font-size: 13px;
-                color: #94711c;
-              ">Do not share these credentials with anyone, including Business Information System employees. This information is confidential and for your use only.</p>
+              <p style="margin: 0; color: #856404;">
+                <strong>Security Notice:</strong> Do not share these credentials with anyone, including Business Information System employees. This information is confidential and for your use only.
+              </p>
+            </div>
+
+            <div style="margin-top: 30px;">
+              <h3 style="margin: 0 0 15px; color: #1a3a6c;">Next Steps:</h3>
+              <ul style="margin: 0; padding-left: 20px;">
+                <li style="margin-bottom: 8px;">Log in to your student portal using the provided credentials.</li>
+                <li style="margin-bottom: 8px;">Change your password immediately for security purposes.</li>
+                <li style="margin-bottom: 8px;">Complete your student profile and upload required documents.</li>
+                <li>Review the orientation materials in your dashboard.</li>
+              </ul>
+            </div>
+
+            <div style="
+              margin-top: 30px;
+              padding-top: 20px;
+              border-top: 1px solid #eee;
+              text-align: center;
+              color: #666;
+            ">
+              <p style="margin: 0;">
+                Need help? Contact us at <a href="mailto:info@hti.edu.eg" style="color: #1a3a6c;">info@hti.edu.eg</a>
+              </p>
             </div>
           </div>
-
-          <div style="
-            margin: 32px 0;
-            padding: 24px;
-            background-color: #f8f9ff;
-            border-radius: 12px;
-          ">
-            <h3 style="
-              margin: 0 0 16px 0;
-              font-size: 16px;
-              font-weight: 600;
-              color: #1a3a6c;
-            ">Next Steps</h3>
-            <ul style="
-              margin: 0;
-              padding: 0 0 0 24px;
-              color: #555;
-            ">
-              <li style="margin-bottom: 8px;">Log in to your student portal using the provided credentials.</li>
-              <li style="margin-bottom: 8px;">Change your password immediately for security purposes.</li>
-              <li style="margin-bottom: 8px;">Complete your student profile and upload required documents.</li>
-              <li>Review the orientation materials in your dashboard.</li>
-            </ul>
-          </div>
         </div>
-      </div>
-    </body>
-  </html>
+      </body>
+    </html>
   `;
 };

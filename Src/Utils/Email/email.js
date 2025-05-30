@@ -8,8 +8,7 @@ export const sendEmail = async ({ to, subject, html }) => {
     auth: {
       user: process.env.USER_SEND,
       pass: process.env.USER_PASS,
-    },
-    
+    }
   });
 
   const mailOptions = {
@@ -22,10 +21,10 @@ export const sendEmail = async ({ to, subject, html }) => {
     html,
     priority: "high",
     headers: {
-         'X-Priority': '1',
+      'X-Priority': '1',
       'Importance': 'High',
-      'List-Unsubscribe': `<mailto:${process.env.USER_SEND}?subject=unsubscribe>`,
-    },
+      'X-Mailer': 'Business Information System'
+    }
   };
 
   try {
