@@ -5,14 +5,14 @@ export const emailHtml = (customId, password) => {
   const year = currentDate.getFullYear();
   const formattedDate = `${day} ${month}, ${year}`;
   return `
-   <!DOCTYPE html>
+    <!DOCTYPE html>
   <html lang="en">
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <title>Student Credentials</title>
-  
+     
     </head>
     <body style="
       margin: 0;
@@ -35,17 +35,20 @@ export const emailHtml = (customId, password) => {
           position: relative;
           overflow: hidden;
         ">
-          <div style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://bis-wine.vercel.app/mailImage.jpg') !important;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1;
-          "></div>
+      <img src="https://bis-wine.vercel.app/mailImage.jpg" 
+     style="
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       opacity: 0.1;
+       z-index: 1;
+     " 
+     alt="Background image">
 
           <table style="width: 100%; position: relative; z-index: 2;">
             <tbody>
@@ -63,7 +66,7 @@ export const emailHtml = (customId, password) => {
                     font-size: 14px;
                     font-weight: 500;
                     color: rgba(255, 255, 255, 0.9) !important;
-                    background: rgba(255, 255, 255, 0.1);
+                    background: rgba(255, 255, 255, 0.1) !important;
                     padding: 6px 12px;
                     border-radius: 16px;
                   ">${formattedDate}</span>
@@ -105,19 +108,7 @@ export const emailHtml = (customId, password) => {
             border-left: 4px solid #1a3a6c;
           ">
             <div style="display: flex; align-items: center; margin-bottom: 16px;">
-              <div style="
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                background-color: rgba(26, 58, 108, 0.1);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-right: 16px;
-              ">
-                <img src="https://img.icons8.com/?size=100&id=EHyUO6ZGSRkX&format=png&color=000000"
-                alt="lock icon" style="width: 20px; height: 20px; display: block;" />
-              </div>
+              
               <h2 style="
                 margin: 0;
                 font-size: 18px;
@@ -233,51 +224,6 @@ export const emailHtml = (customId, password) => {
               <li style="margin-bottom: 8px;">Complete your student profile and upload required documents.</li>
               <li>Review the orientation materials in your dashboard.</li>
             </ul>
-          </div>
-               <!-- Help Section -->
-            <div style="
-              margin: 32px 0;
-              text-align: center;
-              padding: 24px;
-              background-color: #fff;
-              border-radius: 12px;
-              border: 1px dashed #e0e0e0;
-            ">
-              <h3 style="
-                margin: 0;
-                font-size: 16px;
-                font-weight: 600;
-                color: #1a3a6c;
-              ">Need Assistance?</h3>
-              
-              <p style="
-                margin: 16px 0;
-                font-size: 14px;
-                color: #555;
-              ">
-                Our support team is available to help you with any questions or issues you may encounter.
-              </p>
-              
-              <a href="mailto:info@hti.edu.eg" style="
-                display: inline-block;
-                padding: 8px 24px;
-                background-color: #1a3a6c;
-                color: #ffffff;
-                text-decoration: none;
-                font-weight: 500;
-                border-radius: 4px;
-                font-size: 14px;
-                transition: background-color 0.3s ease;
-              ">Contact Support</a>
-              
-              <p style="
-                margin: 16px 0 0 0;
-                font-size: 13px;
-                color: #999;
-              ">
-                Email: <a href="mailto:info@hti.edu.eg" style="color: #1a3a6c; text-decoration: none;">info@hti.edu.eg</a> | Phone: 055 4351292
-              </p>
-            </div>
           </div>
         </div>
       </div>
