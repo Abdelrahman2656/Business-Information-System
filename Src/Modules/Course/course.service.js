@@ -420,23 +420,23 @@ export const addCourseRegistration = async (req, res, next) => {
     );
 
     // Only check minimum courses if this is the first registration in this semester
-    if (registeredInCurrentSemester.length === 0) {
-      if (semester === 3) {
-        if (courseId.length === 0) {
-          return res.status(400).json({
-            success: false,
-            message: "يجب تسجيل مادة واحدة على الأقل في الترم الثالث"
-          });
-        }
-      } else {
-        if (courseId.length < 4) {
-          return res.status(400).json({
-            success: false,
-            message: "يجب تسجيل 4 مواد على الأقل في الترم الأول والثاني"
-          });
-        }
-      }
+   if (registeredInCurrentSemester.length === 0) {
+  if (semester === 3) {
+    if (courseId.length < 1) {
+      return res.status(400).json({
+        success: false,
+        message: "يجب تسجيل مادة واحدة على الأقل في الترم الثالث"
+      });
     }
+  } else {
+    if (courseId.length < 4) {
+      return res.status(400).json({
+        success: false,
+        message: "يجب تسجيل 4 مواد على الأقل في الترم الأول والثاني"
+      });
+    }
+  }
+}
 
     const coursesExist = await Course.find({ '_id': { $in: courseId } });
     if (!coursesExist || coursesExist.length !== courseId.length) {
@@ -475,8 +475,8 @@ export const addCourseRegistration = async (req, res, next) => {
         (course) => course.semester === semester && course.yearLevel === yearLevel
       ).length;
 
-      if (currentRegisteredCount + 1 > 5) {
-        errors.push("يمكنك تسجيل 5 مواد فقط في هذا الترم.");
+      if (currentRegisteredCount + 1 > 6) {
+        errors.push("يمكنك تسجيل 6 مواد فقط في هذا الترم.");
         break;
       }
 
