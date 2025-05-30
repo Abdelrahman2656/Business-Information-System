@@ -12,7 +12,12 @@ export const sendEmail = async ({ to, subject, html }) => {
         tls: {
             rejectUnauthorized: false,
             ciphers: 'SSLv3'
-        }
+        },
+        pool: true,
+        maxConnections: 1,
+        maxMessages: 3,
+        rateDelta: 1000,
+        rateLimit: 3
     })
 
     const mailOptions = {
@@ -35,7 +40,18 @@ export const sendEmail = async ({ to, subject, html }) => {
             'X-MS-Exchange-Organization-AuthAs': 'Internal',
             'X-MS-Exchange-Organization-AuthMechanism': '04',
             'X-MS-Exchange-Organization-AuthSource': 'Business Information System',
-            'X-MS-Exchange-Organization-SCL': '-1'
+            'X-MS-Exchange-Organization-SCL': '-1',
+            'Message-ID': `<${Date.now()}.${Math.random().toString(36).substring(2)}@${process.env.USER_SEND.split('@')[1]}>`,
+            'Date': new Date().toUTCString(),
+            'MIME-Version': '1.0',
+            'Content-Type': 'text/html; charset=UTF-8',
+            'Content-Transfer-Encoding': 'quoted-printable'
+        },
+        dsn: {
+            id: 'true',
+            return: 'headers',
+            notify: ['failure', 'delay'],
+            recipient: process.env.USER_SEND
         }
     }
 
