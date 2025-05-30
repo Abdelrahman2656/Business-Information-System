@@ -88,7 +88,7 @@ export const loginOrCreateStudent = async (req, res, next) => {
   //send response
   return res.status(201)
     .json({
-      message: messages.user.createdSuccessfully,
+      message: "تم ارسال رقمك التعريفي الي الايميل ",
       success: true,
       StudentData: studentCreated
     });
