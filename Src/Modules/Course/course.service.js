@@ -613,7 +613,7 @@ export const confirmCourseRegistration = async (req, res, next) => {
     let minRequiredCourses;
     let errorMessage;
     
-    if (semester === 3) {
+    if (semester === "summer") {
       minRequiredCourses = 1;
       errorMessage = "لا يمكن تأكيد التسجيل. يجب تسجيل مادة واحدة على الأقل في الترم الثالث للانتقال إلى الترم التالي.";
     } else {
