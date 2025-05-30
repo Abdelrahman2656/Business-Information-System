@@ -40,14 +40,7 @@ export const emailHtml = (customId, password) => {
           <table style="width: 100%; position: relative; z-index: 2;">
             <tbody>
               <tr>
-                <td>
-                  <img
-                    alt="BIS Logo"
-                    src="https://bis-wine.vercel.app/logo.png"
-                    height="64px"
-                    style="filter: brightness(0) invert(1);"
-                  />
-                </td>
+               
                 <td style="text-align: right;">
                   <span style="
                     font-size: 14px;
