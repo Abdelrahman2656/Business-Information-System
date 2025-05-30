@@ -19,18 +19,20 @@ export const loginOrCreateStudent = async (req, res, next) => {
     return next(new AppError("هذا البريد الإلكتروني مسجل بالفعل", 400));
   }
 
+  //check if trying to login with email
+  const isEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(loginIdentifier);
+  if (isEmail) {
+    return next(new AppError("يرجى تسجيل الدخول باستخدام الرقم التعريفي الخاص بك", 400));
+  }
+
   //check exist
   let userExist = await Student.findOne({
     $or: [
-      { loginIdentifier },
       { customId: loginIdentifier }
     ],
   });
   
   if (userExist) {
-    if (userExist.email === loginIdentifier) {
-      return next(new AppError(messages.user.customIdRequired, 400));
-    }
     let match = await comparePassword({ password, hashPassword: userExist.password });
     if (!match) {
       return next(new AppError(messages.user.Incorrect, 400));
@@ -63,11 +65,11 @@ export const loginOrCreateStudent = async (req, res, next) => {
   let customId = `${year}${randomId}`;
   //create student
   const student = new Student({
-    email: loginIdentifier,
+    email: loginIdentifier, // Use loginIdentifier as email for new registration
     customId,
     role,
     password,
-    loginIdentifier
+    loginIdentifier: loginIdentifier
   });
   const studentCreated = await student.save();
   if (!studentCreated) {

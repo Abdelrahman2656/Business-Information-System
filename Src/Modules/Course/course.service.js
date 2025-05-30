@@ -414,6 +414,27 @@ export const addCourseRegistration = async (req, res, next) => {
     const semester = studentExist.getCurrentSemester();
     const yearLevel = studentExist.getYearLevel();
 
+    // Check minimum courses requirement
+    const registeredInCurrentSemester = studentExist.registerCourses.filter(
+      (course) => course.semester === semester && course.yearLevel === yearLevel
+    );
+
+    if (semester === 3) {
+      if (registeredInCurrentSemester.length === 0 && courseId.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: "يجب تسجيل مادة واحدة على الأقل في الترم الثالث"
+        });
+      }
+    } else {
+      if (registeredInCurrentSemester.length === 0 && courseId.length < 4) {
+        return res.status(400).json({
+          success: false,
+          message: "يجب تسجيل 4 مواد على الأقل في الترم الأول والثاني"
+        });
+      }
+    }
+
     const coursesExist = await Course.find({ '_id': { $in: courseId } });
     if (!coursesExist || coursesExist.length !== courseId.length) {
       return next(new AppError(messages.course.notFound, 404));
@@ -447,11 +468,11 @@ export const addCourseRegistration = async (req, res, next) => {
         continue;
       }
 
-      const registeredInCurrentSemester = studentExist.registerCourses.filter(
+      const currentRegisteredCount = studentExist.registerCourses.filter(
         (course) => course.semester === semester && course.yearLevel === yearLevel
-      );
+      ).length;
 
-      if (registeredInCurrentSemester.length >= 5) {
+      if (currentRegisteredCount + 1 > 5) {
         errors.push("يمكنك تسجيل 5 مواد فقط في هذا الترم.");
         break;
       }
