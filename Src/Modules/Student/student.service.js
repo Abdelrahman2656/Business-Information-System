@@ -10,15 +10,11 @@ export const loginOrCreateStudent = async (req, res, next) => {
   //get data from req
   const { loginIdentifier, password, role, email } = req.body;
   
-
-  
-
   //check if email exists
   const emailExists = await Student.findOne({ email: loginIdentifier });
   if (emailExists) {
     return next(new AppError("هذا البريد الإلكتروني مسجل بالفعل", 400));
   }
-
   //check if trying to login with email
   const isEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(loginIdentifier);
 
@@ -30,6 +26,7 @@ export const loginOrCreateStudent = async (req, res, next) => {
   });
   
   if (userExist) {
+   
     // If user exists, they must login with customId
     if (isEmail) {
       return next(new AppError("يرجى تسجيل الدخول باستخدام الرقم التعريفي الخاص بك", 400));
@@ -88,7 +85,7 @@ export const loginOrCreateStudent = async (req, res, next) => {
   //send response
   return res.status(201)
     .json({
-      message: "تم ارسال رقمك التعريفي الي الايميل ",
+      message: " تم ارسال رقمك التعريفي الي الايميل الخاص بك ",
       success: true,
       StudentData: studentCreated
     });
