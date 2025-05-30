@@ -9,9 +9,7 @@ export const sendEmail = async ({ to, subject, html }) => {
             user: process.env.USER_SEND,
             pass: process.env.USER_PASS,
         },
-   tls: {
-  minVersion: 'TLSv1.2'
-},
+
         pool: true,
         maxConnections: 1,
         maxMessages: 3,
