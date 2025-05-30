@@ -5,7 +5,7 @@ export const emailHtml = (customId, password) => {
   const year = currentDate.getFullYear();
   const formattedDate = `${day} ${month}, ${year}`;
   return `
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
