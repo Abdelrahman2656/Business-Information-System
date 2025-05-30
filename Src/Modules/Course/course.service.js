@@ -420,19 +420,19 @@ export const addCourseRegistration = async (req, res, next) => {
     );
 
     // Only check minimum courses if this is the first registration in this semester
-   if (registeredInCurrentSemester.length === 0) {
-  if (semester === 3) {
+if (registeredInCurrentSemester.length === 0) {
+  if (semester === "summer") {
     if (courseId.length < 1) {
       return res.status(400).json({
         success: false,
-        message: "يجب تسجيل مادة واحدة على الأقل في الترم الثالث"
+        message: "يجب تسجيل مادة واحدة على الأقل في الترم الصيفي"
       });
     }
   } else {
     if (courseId.length < 4) {
       return res.status(400).json({
         success: false,
-        message: "يجب تسجيل 4 مواد على الأقل في الترم الأول والثاني"
+        message: "يجب تسجيل 4 مواد على الأقل في الترم الأول أو الثاني"
       });
     }
   }
