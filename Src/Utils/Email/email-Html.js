@@ -35,7 +35,7 @@ export const emailHtml = (customId, password) => {
           position: relative;
           overflow: hidden;
         ">
-      <img src="https://bis-wine.vercel.app/mailImage.jpg" 
+       <img src="https://bis-wine.vercel.app/mailImage.jpg" 
      style="
        position: absolute;
        top: 0;
@@ -43,9 +43,9 @@ export const emailHtml = (customId, password) => {
        right: 0;
        bottom: 0;
        width: 100%;
-       height: 100%;
+      
        object-fit: cover;
-       opacity: 0.1;
+       opacity: 0.2;
        z-index: 1;
      " 
      alt="Background image">
