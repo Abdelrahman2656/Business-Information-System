@@ -10,26 +10,25 @@ import { globalErrorHandling } from "./Middleware/asyncHandler.js";
 import { courseRouter, studentRouter } from "./Modules/index.js";
 import { limiter } from "./Utils/Rate-Limiter/rate-limiter.js";
 
-const bootstrap  =async(app,express) => {
+const bootstrap = async (app, express) => {
   //dotenv
   dotenv.config({ path: path.resolve("./.env") });
-  app.set('trust proxy', 1);
+  app.set("trust proxy", 1);
   //rate limiter
-  app.use(limiter)
+  app.use(limiter);
   //helmet
-  app.use(helmet())
+  app.use(helmet());
   //use cors middleware
   app.use(cors());
   //app use json
   app.use(express.json());
-  
+
   //database
-   dbconnection();
+  dbconnection();
   //course data
   if (process.env.INSERT_COURSES === "true") {
     await insertCourses();
   }
-
 
   // Router
   app.use("/api/v1", studentRouter);
@@ -37,4 +36,4 @@ const bootstrap  =async(app,express) => {
   //global error handling
   app.use(globalErrorHandling);
 };
-export default bootstrap
+export default bootstrap;
