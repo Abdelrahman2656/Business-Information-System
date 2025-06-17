@@ -95,7 +95,7 @@ studentSchema.methods.getAllConfirmedCourses = function() {
 
 //next semester
 studentSchema.methods.advanceSemester=async function(){
-  // Add current semester courses to confirmed courses before advancing
+ 
   const currentSemester = this.currentSemester;
   const currentYearLevel = this.getYearLevel();
   
@@ -133,28 +133,28 @@ studentSchema.methods.scheduleAdvance = function () {
 
   
 
-  const fallStart = new Date(currentDate.getFullYear(), 9, 1);  // October 1
-const fallEnd = new Date(currentDate.getFullYear() + 1, 0, 1); // January 1 next year
+  const fallStart = new Date(currentDate.getFullYear(), 9, 1); 
+const fallEnd = new Date(currentDate.getFullYear() + 1, 0, 1); 
 
-const springStart = new Date(currentDate.getFullYear(), 1, 1); // February 1
-const springEnd = new Date(currentDate.getFullYear(), 5, 1);   // June 1
+const springStart = new Date(currentDate.getFullYear(), 1, 1);
+const springEnd = new Date(currentDate.getFullYear(), 5, 1);   
 
-const summerStart = new Date(currentDate.getFullYear(), 6, 1); // July 1
-const summerEnd = new Date(currentDate.getFullYear(), 8, 30);  // September 30
-  // Calculate delay until the next semester starts
+const summerStart = new Date(currentDate.getFullYear(), 6, 1); 
+const summerEnd = new Date(currentDate.getFullYear(), 8, 30); 
+ 
   let delay = 0;
 
   // Check if current date is in fall
   if (currentDate >= fallStart && currentDate <= fallEnd) {
-    delay = fallEnd - currentDate; // time until next semester (spring)
+    delay = fallEnd - currentDate; 
   }
   // Check if current date is in spring
   else if (currentDate >= springStart && currentDate <= springEnd) {
-    delay = springEnd - currentDate; // time until next semester (summer)
+    delay = springEnd - currentDate; 
   }
   // Check if current date is in summer
   else if (currentDate >= summerStart && currentDate <= summerEnd) {
-    delay = summerEnd - currentDate; // time until next semester (fall)
+    delay = summerEnd - currentDate; 
   }
 
   setTimeout(async () => {

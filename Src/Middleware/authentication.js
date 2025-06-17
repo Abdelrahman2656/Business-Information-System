@@ -16,7 +16,7 @@ export const isAuthentication = () => {
       token,
       secretKey: process.env.SECRET_KEY,
     });
-    console.log("Decoded Payload:", payload); // تسجيل المحتوى
+    console.log("Decoded Payload:", payload); 
     if (payload.message) {
       return next(new AppError(payload.message, 401));
     }

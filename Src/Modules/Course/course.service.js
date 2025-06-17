@@ -201,7 +201,7 @@ export const unRegisterCourses = async (req, res, next) => {
   let yearLevel= student.getYearLevel()
 
   const allCourse = await Course.find({yearLevel, semester:currentSemester})
-   // الفلترة: شيل المواد اللي الطالب مسجلها بالفعل
+   
    const unregisteredCourses = allCourse.filter(course =>
     !student.registerCourses.some(registered =>
       registered.course._id.toString() === course._id.toString()
@@ -588,7 +588,7 @@ export const confirmCourseRegistration = async (req, res, next) => {
     // Check if student is already in confirmation period
     if (studentExist.confirmationStartTime) {
       const timeElapsed = Date.now() - studentExist.confirmationStartTime;
-      if (timeElapsed > 60000) { // 1 minute in milliseconds
+      if (timeElapsed > 60000) { 
         // If more than 1 minute has passed, proceed with semester advancement
         await advanceStudentSemester(studentExist);
         return res.status(200).json({
