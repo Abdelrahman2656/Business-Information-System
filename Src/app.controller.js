@@ -1,10 +1,8 @@
 import cors from "cors";
 import dotenv from "dotenv";
-
+import helmet from "helmet";
 import path from "path";
 import { insertCourses } from "../Database/add-courses.js";
-
-import helmet from "helmet";
 import dbconnection from "../Database/dbconnection.js";
 import { globalErrorHandling } from "./Middleware/asyncHandler.js";
 import { courseRouter, studentRouter } from "./Modules/index.js";
@@ -24,7 +22,7 @@ const bootstrap = async (app, express) => {
   app.use(express.json());
 
   //database
-  dbconnection();
+  await dbconnection();
   //course data
   if (process.env.INSERT_COURSES === "true") {
     await insertCourses();
